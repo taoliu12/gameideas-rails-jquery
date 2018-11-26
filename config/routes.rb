@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :games
   root 'application#welcome'
 
   get '/login' => 'sessions#new'

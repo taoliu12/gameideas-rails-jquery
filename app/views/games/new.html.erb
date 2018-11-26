@@ -1,1 +1,7 @@
-index
+<h1>New game</h1>
+
+<%= form_for @game do |f| %>
+    title: <%= f.text_field :title %>
+    game summary: <%= f.text_field :summary %>
+    <%= f.submit %>
+<% end %>

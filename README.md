@@ -1,6 +1,6 @@
-# Plot Writer
+# Game Ideas
 
-This is a rails application that helps authors create story plot outlines using preset forms. The forms follow the guideline of a basic plot blueprint, including character, setting, conflict, and resolution. Users create accounts and can save their plots.
+This is a rails application that helps game makers brainstorm ideas for potential video games. 
 
 ## Installation
 

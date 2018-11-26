@@ -11,7 +11,17 @@ class GamesController < ApplicationController
     
     def create
         @game = Game.create(game_params)
-        redirect_to game_path(@game)
+        if @game.save
+            redirect_to game_path(@game)
+        else
+            redirect_to new_game_path
+        end
+        
+    end
+
+    def show
+        @game = Game.find(params[:id])
+        
     end
     
     def edit

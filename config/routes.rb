@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :games
-  root 'application#welcome'
+  root 'games#index'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

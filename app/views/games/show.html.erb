@@ -10,8 +10,9 @@
 </ul>
 
 <h2>Make a suggestion: </h2>
-<%= form_for @game.suggestions.new do |f| %>
+<%= form_for [@game, @suggestion] do |f| %>
     <%= f.text_field :content, :placeholder => 'Suggest an idea' %>
+    <%= f.submit %>
 <% end %>
 
 <h3><%= link_to 'All games', games_path %></h3>

@@ -1,7 +1,7 @@
 <h1>New game</h1>
 
 <%= form_for @game do |f| %>
-    title: <%= f.text_field :title %>
-    game summary: <%= f.text_field :summary %>
+    title: <%= f.text_field :title, :class => 'new-todo' %>
+    game summary: <%= f.text_field :summary, :class => 'new-todo' %>
     <%= f.submit %>
 <% end %>

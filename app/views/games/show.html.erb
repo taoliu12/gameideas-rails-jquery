@@ -2,13 +2,16 @@
 <h2>Game Summary: </h2>
 <p><%= @game.summary %></p>
 
-<h2>Make a suggestion: </h2>
-<input placeholder='Suggest an idea'>
-
 <h2>Suggestions:</h2>
 <ul>
-    <li> Make a 3rd person camera option </li>
-    <li> Please add multiple playable characters </li>
+    <% @game.suggestions.each do |suggestion| %>
+        <li><%= suggestion.content %></li>
+    <% end %>
 </ul>
+
+<h2>Make a suggestion: </h2>
+<%= form_for @game.suggestions.new do |f| %>
+    <%= f.text_field :content, :placeholder => 'Suggest an idea' %>
+<% end %>
 
 <h3><%= link_to 'All games', games_path %></h3>

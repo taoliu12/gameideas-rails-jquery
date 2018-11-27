@@ -10,6 +10,7 @@ class GamesController < ApplicationController
     end
     
     def create
+        #current_user.games.create(game_params)
         @game = Game.create(game_params)
         if @game.save
             redirect_to game_path(@game)
@@ -21,7 +22,7 @@ class GamesController < ApplicationController
 
     def show
         @game = Game.find(params[:id])
-        
+
     end
     
     def edit

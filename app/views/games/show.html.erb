@@ -1,3 +1,14 @@
 <h1><%= @game.title %></h1>
+<h2>Game Summary: </h2>
+<p><%= @game.summary %></p>
+
+<h2>Make a suggestion: </h2>
+<input placeholder='Suggest an idea'>
+
+<h2>Suggestions:</h2>
+<ul>
+    <li> Make a 3rd person camera option </li>
+    <li> Please add multiple playable characters </li>
+</ul>
 
 <h3><%= link_to 'All games', games_path %></h3>

@@ -22,7 +22,7 @@ class GamesController < ApplicationController
 
     def show
         @game = Game.find(params[:id])
-
+        @suggestion = @game.suggestions.build
     end
     
     def edit

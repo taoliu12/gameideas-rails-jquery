@@ -5,7 +5,12 @@
 <h2>Suggestions:</h2>
 <ul>
     <% @game.suggestions.each do |suggestion| %>
-        <li><%= suggestion.content %>   Greenlit: <input type='checkbox' class='toggle'></li>
+        <li class=<%= "greenlit" if suggestion.greenlit? %>>
+            <%= suggestion.content %>
+            <form action='/'>
+                Greenlit:  <input type='checkbox' class='greenlit'>
+            </form>
+        </li>
     <% end %>
 </ul>
 

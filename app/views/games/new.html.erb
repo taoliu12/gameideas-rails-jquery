@@ -1,7 +1,15 @@
-<h1>New game</h1>
+<h1>Create a new game</h1>
 
 <%= form_for @game do |f| %>
-    title: <%= f.text_field :title, :class => 'new-todo' %>
-    game summary: <%= f.text_field :summary, :class => 'new-todo' %>
+    Title (e.g. Mario Brothers): <br>
+    <%= f.text_field :title, :class => 'form_field' %>
+    <div class='form_error_message'><%= @game.errors.full_messages_for(:title).first %></div>
+    <br> 
+
+    Summary (e.g. is your game a 2D platformer? How will the graphics look?):   <br>
+    <%= f.text_field :summary, :class => 'form_field' %>
+    <div class='form_error_message'><%= @game.errors.full_messages_for(:summary).first %></div>
+    <br><br>
+
     <%= f.submit %>
 <% end %>

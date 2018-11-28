@@ -10,14 +10,11 @@ class SuggestionsController < ApplicationController
     def create
         @game = Game.find(params[:game_id])
         @suggestion = @game.suggestions.build(suggestion_params)
-        @suggestion.save
-        redirect_to game_path(@game)
-
-        # if @suggestion.save
-        #     redirect_to game_path(@game)
-        # else
-        #     redirect_to new_suggestion_path
-        # end    
+        if @suggestion.save
+            redirect_to game_path(@game)
+        else
+            render 'games/show'
+        end  
     end
 
     def show

@@ -12,6 +12,7 @@
 <h2>Make a suggestion: </h2>
 <%= form_for [@game, @suggestion] do |f| %>
     <%= f.text_field :content, :placeholder => 'Suggest an idea' %>
+    <div class='form_error_message'><%= @suggestion.errors.full_messages_for(:content).first %></div>
     <%= f.submit %>
 <% end %>
 

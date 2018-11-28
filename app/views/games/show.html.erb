@@ -5,7 +5,7 @@
 <h2>Suggestions:</h2>
 <ul>
     <% @game.suggestions.each do |suggestion| %>
-        <li><%= suggestion.content %></li>
+        <li><%= suggestion.content %>   Greenlit: <input type='checkbox' class='toggle'></li>
     <% end %>
 </ul>
 

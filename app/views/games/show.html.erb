@@ -4,17 +4,7 @@
 <h2>Recent Suggestions:</h2>
 <ul>
     <% @game.suggestions.limit(5).each do |suggestion| %>
-        <li class=<%= "greenlit" if suggestion.greenlit? %>>
-            <%= suggestion.content %>
-            <%= form_for([@game, suggestion]) do |f| %>
-                <%= if suggestion.greenlit?
-                    'Greenlit:'
-                else
-                    'Pending'       
-                end %> 
-                 <%= f.check_box :status, class: 'greenlit', checked: (true if suggestion.greenlit?) %>
-            <% end %>
-        </li>
+        <%= render partial: 'suggestions/suggestion_li', locals: {suggestion: suggestion} %>
     <% end %>
 </ul>
 <h3><%= link_to 'All suggestions', game_suggestions_path(@game) %></h3>

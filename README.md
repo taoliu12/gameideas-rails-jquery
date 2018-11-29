@@ -1,6 +1,6 @@
 # Game Ideas
 
-This is a rails application that helps game makers brainstorm ideas for potential video games. 
+This is a rails application that helps game makers brainstorm ideas for potential video games. Users can submit suggestions to each game, and the game creator can mark a suggestion as 'greenlit.' This means the game creator intends to turn the suggestion into a feature in the game.
 
 ## Installation
 

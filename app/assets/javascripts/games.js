@@ -1,5 +1,5 @@
 $(function() {
-    $('input.greenlit').on('change', function() {
+    $('.greenlit-chkbox').on('change', function() {
         $(this).parents('form').trigger('submit')
     })
 });

@@ -2,15 +2,10 @@
 <p><%= @game.summary  %></p>
 
 <h2>All Suggestions for <%= @game.title %>:</h2>
-<ul>
+<ol>
     <% @game.suggestions.each do |suggestion| %>
-        <li class=<%= "greenlit" if suggestion.greenlit? %>>
-            <%= suggestion.content %>
-            <form action='/'>
-                Greenlit:  <input type='checkbox' class='greenlit'>
-            </form>
-        </li>
+        <%= render partial: 'suggestions/suggestion_li', locals: {suggestion: suggestion} %>
     <% end %>
-</ul>
+</ol>
 <h3><%= link_to 'Make suggestion', new_game_suggestion_path %></h3>
 <h3><%= link_to 'All games', games_path %></h3>

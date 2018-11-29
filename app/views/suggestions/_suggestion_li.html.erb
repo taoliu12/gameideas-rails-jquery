@@ -1,0 +1,12 @@
+<li class=<%= "greenlit" if suggestion.greenlit? %>>
+    <%= suggestion.content %>
+    <%= form_for([@game, suggestion]) do |f| %>
+        Status: 
+        <%= if suggestion.greenlit?
+            'Greenlit:'
+        else
+            'Pending'       
+        end %> 
+        <%= f.check_box :status, class: 'greenlit', checked: (true if suggestion.greenlit?) %>
+    <% end %>
+</li>

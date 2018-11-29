@@ -2,7 +2,8 @@
     <%= suggestion.content %>
     <%= form_for([@game, suggestion]) do |f| %>
         <%=greenlit_or_pending(suggestion)%>
-        <%= f.check_box :status, class: 'greenlit', checked: (true if suggestion.greenlit?) %>
+        <%= f.check_box :status, class: 'greenlit-chkbox', checked: (true if suggestion.greenlit?) %>
+            <%# dont forget to change Jquery selector if changing checkbox class name %>
     <% end %>
 </li>
 

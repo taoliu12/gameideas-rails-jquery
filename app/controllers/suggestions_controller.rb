@@ -29,7 +29,9 @@ class SuggestionsController < ApplicationController
     end
     
     def update
-        # raise params.inspect
+         raise params.inspect
+        @suggestion = Suggestion.find_by_id(params[:id])
+        @suggestion.update(suggestion_params)
     end
     
     def destroy
@@ -39,6 +41,6 @@ class SuggestionsController < ApplicationController
     private
 
     def suggestion_params
-        params.require(:suggestion).permit(:content)
+        params.require(:suggestion).permit(:content, :status)
     end
 end

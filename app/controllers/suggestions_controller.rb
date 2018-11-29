@@ -29,9 +29,11 @@ class SuggestionsController < ApplicationController
     end
     
     def update
-         raise params.inspect
+        # raise params.inspect
+        @game = Game.find(params[:game_id])
         @suggestion = Suggestion.find_by_id(params[:id])
         @suggestion.update(suggestion_params)
+        redirect_back(fallback_location: game_path(@game)) #goes to the previous page, or on error, falls back to game show page
     end
     
     def destroy

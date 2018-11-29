@@ -12,7 +12,7 @@
                 else
                     'Pending'       
                 end %> 
-                 <input type='checkbox' class='greenlit' <%= "checked='checked'" if suggestion.greenlit? %>>
+                 <%= f.check_box :status, class: 'greenlit', checked: (true if suggestion.greenlit?) %>
             <% end %>
         </li>
     <% end %>

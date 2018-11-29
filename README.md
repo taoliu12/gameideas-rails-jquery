@@ -1,6 +1,6 @@
 # Game Ideas
 
-This is a rails application that helps game makers brainstorm ideas for potential video games. 
+This is a rails application that helps game makers brainstorm ideas for potential video games. Users can submit suggestions to each game, and the game creator can mark a suggestion as approved. 
 
 ## Installation
 

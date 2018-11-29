@@ -2,9 +2,9 @@
 <h2>Game Summary: </h2>
 <p><%= @game.summary %></p>
 
-<h2>Suggestions:</h2>
+<h2>Recent Suggestions:</h2>
 <ul>
-    <% @game.suggestions.each do |suggestion| %>
+    <% @game.suggestions.limit(5).each do |suggestion| %>
         <li class=<%= "greenlit" if suggestion.greenlit? %>>
             <%= suggestion.content %>
             <form action='/'>
@@ -13,12 +13,8 @@
         </li>
     <% end %>
 </ul>
+<h3><%= link_to 'All suggestions', game_suggestions_path(@game) %></h3>
 
-<h2>Make a suggestion: </h2>
-<%= form_for [@game, @suggestion] do |f| %>
-    <%= f.text_field :content, :placeholder => 'Suggest an idea' %>
-    <div class='form_error_message'><%= @suggestion.errors.full_messages_for(:content).first %></div>
-    <%= f.submit %>
-<% end %>
+<h3><%= link_to 'Make suggestion', new_game_suggestion_path %></h3>
 
 <h3><%= link_to 'All games', games_path %></h3>

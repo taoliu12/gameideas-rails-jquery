@@ -1,5 +1,4 @@
 <h1><%= @game.title %></h1>
-<h2>Game Summary: </h2>
 <p><%= @game.summary %></p>
 
 <h2>Recent Suggestions:</h2>
@@ -15,6 +14,6 @@
 </ul>
 <h3><%= link_to 'All suggestions', game_suggestions_path(@game) %></h3>
 
-<h3><%= link_to 'Make suggestion', new_game_suggestion_path %></h3>
+<h3><%= link_to 'Make suggestion', new_game_suggestion_path(@game) %></h3>
 
 <h3><%= link_to 'All games', games_path %></h3>

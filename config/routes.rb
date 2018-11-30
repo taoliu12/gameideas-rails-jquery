@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-  get '/auth/github/callback'  => 'sessions#create'
+  get '/auth/:provider/callback'  => 'sessions#create'
   
   resources :users, :only =>  [:new, :create]
 end

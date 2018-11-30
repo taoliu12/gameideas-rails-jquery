@@ -3,9 +3,8 @@ class SessionsController < ApplicationController
     end
   
     def create
-      raise "stop".inspect
       omniauth_email = request.env['omniauth.auth'][:info][:email] 
-      raise omniauth_email.inspect
+      # raise omniauth_email.inspect
       if omniauth_email #omniauth login
         user = User.find_or_create_by_omniauth(omniauth_email) #custom omniauth helper
         session[:user_id] = user.id 

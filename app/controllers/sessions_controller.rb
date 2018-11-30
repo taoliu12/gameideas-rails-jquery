@@ -3,8 +3,11 @@ class SessionsController < ApplicationController
     end
   
     def create
-      if auth_hash = request.env['omniauth.auth'] #omniauth
-        raise auth_hash.inspect
+      omniauth_email = request.env['omniauth.auth'][:info][:email] 
+      if auth_email
+        user = User.find_or_create_by_omniauth(omniauth_email) #custom omniauth helper
+        session[:user_id] = user.id 
+        redirect_to root_path 
       else
         @user = User.find_by(username: params[:user][:username])
     

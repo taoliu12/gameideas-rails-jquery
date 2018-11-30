@@ -7,3 +7,5 @@
 </ol>
 
 <h3><%= link_to 'Make a new game', new_game_path %></h3>
+
+Logged in as <%= current_user.username %> | <%= link_to "Logout", logout_path %>

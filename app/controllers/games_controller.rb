@@ -10,11 +10,11 @@ class GamesController < ApplicationController
     end
     
     def create
-        #current_user.games.create(game_params)
-        @game = Game.create(game_params)
+        @game = current_user.games.create(game_params)
         if @game.save
             redirect_to game_path(@game)
         else
+            #use render instead of redirect in order to preserve @game.errors
             render :new
         end
         

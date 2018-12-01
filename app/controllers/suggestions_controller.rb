@@ -12,6 +12,7 @@ class SuggestionsController < ApplicationController
     def create
         @game = Game.find(params[:game_id])
         @suggestion = @game.suggestions.build(suggestion_params)
+        @suggestion.user = current_user
         if @suggestion.save
             redirect_to game_suggestions_path
         else

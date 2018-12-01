@@ -1,5 +1,6 @@
 class Suggestion < ApplicationRecord
     belongs_to :game
+    belongs_to :user
     validates :content, :presence => true
 
     def greenlit?

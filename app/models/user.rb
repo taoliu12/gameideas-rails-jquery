@@ -9,15 +9,15 @@ class User < ApplicationRecord
 
     def self.find_or_create_by_omniauth(omniauth_hash)
         user = User.find_by(:email => omniauth_hash[:email])
-        if user
+        if  omniauth_hash[:email]
+            user = User.find_by(:email => omniauth_hash[:email])
             user
-        else
-            user = User.new
-            # omniauth_hash[:email] ?  = omniauth_hash[:email] : user.email = "#{omniauth_hash[:nickname]}@noemail.com"
-            omniauth_hash[:email] = omniauth_hash[:email] || "#{omniauth_hash[:nickname]}@noemail.com"
-            user.username = omniauth_hash[:nickname]
-            user.password = SecureRandom.hex
-            user.save 
+        else 
+            user = User.find_or_create_by(username: omniauth_hash[:nickname]) do |user|
+                user.email =  "#{omniauth_hash[:nickname]}@noemail.com"
+                user.username = omniauth_hash[:nickname]
+                user.password = SecureRandom.hex
+            end
             user  
         end
     end

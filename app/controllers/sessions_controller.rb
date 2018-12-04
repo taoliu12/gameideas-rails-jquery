@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       if request.env['omniauth.auth'] #omniauth login
         omniauth_hash = request.env['omniauth.auth'][:info]
         user = User.find_or_create_by_omniauth(omniauth_hash) #custom omniauth helper in User model
+        # raise user.errors.inspect
         session[:user_id] = user.id 
         redirect_to root_path 
       else #native login

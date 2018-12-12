@@ -20,7 +20,7 @@
     <p>Genre</p>
     <div class='form_error_message'><%= @game.errors.full_messages_for(:genre).first %></div>
 
-    <%= f.collection_select(:game, :genre_id, Genre.all, :id, :name, prompt: true) %>
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: true) %>
 
     <%= f.submit %>
 <% end %>

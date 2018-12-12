@@ -10,6 +10,7 @@ class GamesController < ApplicationController
     end
     
     def create
+        # raise params.inspect
         @game = current_user.games.create(game_params)
         if @game.save
             redirect_to game_path(@game)
@@ -41,6 +42,6 @@ class GamesController < ApplicationController
     private
 
     def game_params
-        params.require(:game).permit(:title, :summary)
+        params.require(:game).permit(:title, :summary, :genre_id)
     end
 end

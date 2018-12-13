@@ -16,7 +16,7 @@
     <%= f.label :'password confirmation:' %>
     <%= f.password_field :password_confirmation %>
     <div class='form_error_message'>
-        <p><%= @user.errors.full_messages_for(:password_confirmation).first %></p>
+        <p><%= @error %></p>
     </div>
     <%= f.submit %>
 <% end %>

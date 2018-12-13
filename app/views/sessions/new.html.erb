@@ -1,10 +1,14 @@
 <h1>Login</h1>
 
 <%= form_for :user, path: '/login' do |f| %>
+    <div class='form_error_message'>
+        <p><%= @error %></p>
+    </div>
     username: <%= f.text_field :username %>
     password: <%= f.password_field :password %>
+
     <%= f.submit 'Login' %>
 <% end %>
-
-<%= link_to 'Go to Signup Page', new_user_path %>
+<br>
+<%= link_to 'Go to Signup Page', new_user_path %> | 
 <%= link_to 'Login via Github', '/auth/github' %>

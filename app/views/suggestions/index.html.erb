@@ -1,10 +1,10 @@
-<h1>All Suggestions for <%= @game.title %>:</h1>
+<h1>All Suggestions for <%= link_to @game.title, game_path(@game) %>:</h1>
 <ol>
     <%= render :collection => @game.suggestions, :partial => 'suggestions/suggestion_li', :as => 'suggestion' %>
     <%# @game.suggestions.each do |suggestion| %>
         <%#= render partial: 'suggestions/suggestion_li', locals: {suggestion: suggestion} %>
     <%# end %>
 </ol>
+
 <h3><%= link_to 'Make suggestion', new_game_suggestion_path %></h3>
-<h3><%= link_to "#{@game.title} Summary", game_path(@game) %></h3>
 <h3><%= link_to 'All games', games_path %></h3>

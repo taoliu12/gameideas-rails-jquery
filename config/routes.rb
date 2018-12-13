@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  root 'games#index'
+
+  get '/games/newest_to_oldest' => 'games#newest_to_oldest', as: 'games_newest_to_oldest'
+
   resources :games do
     resources :suggestions
   end
-
-  root 'games#index'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

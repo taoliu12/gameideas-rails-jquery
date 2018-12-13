@@ -1,8 +1,7 @@
 
 
 <h1>All games</h1>
-<p>Order: Oldest to Newest | <%= link_to 'Newest to Oldest', games_newest_to_oldest_path %></p>
-
+<p>Order: <%= link_to 'Oldest to Newest', games_path %> | Newest to Oldest</p>
 <ol>
 <% @games.each do |g| %>
     <li> <%= link_to g.title, game_path(g) %> </li>

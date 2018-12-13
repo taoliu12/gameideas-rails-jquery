@@ -5,6 +5,10 @@ class GamesController < ApplicationController
         @games = Game.all
     end
 
+    def newest_to_oldest
+        @games = Game.newest_to_oldest
+    end
+
     def new
         @game = Game.new
     end
@@ -18,7 +22,6 @@ class GamesController < ApplicationController
             #use render instead of redirect in order to preserve @game.errors
             render :new
         end
-        
     end
 
     def show

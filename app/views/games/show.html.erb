@@ -9,7 +9,9 @@
         <%= render partial: 'suggestions/suggestion_li', locals: {suggestion: suggestion} %>
     <% end %>
 </ul>
-<h3><%= link_to 'All suggestions', game_suggestions_path(@game) %></h3>
+
+<h3><%= link_to 'Load suggestions', game_suggestions_path(@game), :class => 'load_suggestions' %></h3>
+
 
 <h3><%= link_to 'Make suggestion', new_game_suggestion_path(@game) %></h3>
 

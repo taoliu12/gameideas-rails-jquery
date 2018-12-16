@@ -21,19 +21,22 @@ $(function() {
 
     //Post suggestion
     $('#new_suggestion').on('submit', function(e) {
-        // $.post({  
-        // }).success(function(response) {
-
-        // });
-        // debugger
         url = this.action
         data = {
             'authenticity_token': $("input[name='authenticity_token']").attr('value'),
             'suggestion': { 
                 'content':  $("#suggestion_content").val()
             }
-        }
-        console.log('data');
+        }     
+        
+        $.ajax({
+            type: 'post',
+            url: this.action,
+            data: data
+        }).success(function(response) {
+            console.log(response);
+        });
+        
         e.preventDefault(); 
     });
 });

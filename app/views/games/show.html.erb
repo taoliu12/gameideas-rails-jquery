@@ -10,10 +10,18 @@
     <% end %>
 </ul>
 
-<h3><%= link_to 'Load suggestions', game_suggestions_path(@game), :class => 'load_suggestions' %></h3>
+<%= link_to 'Load suggestions', game_suggestions_path(@game), :class => 'load_suggestions' %>
 
-<div class='suggestions'></div>
+<div class='suggestions'>
+    <ol></ol>
+</div>
 
-<h3><%= link_to 'Make suggestion', new_game_suggestion_path(@game) %></h3>
+<%= form_for [@game, @suggestion] do |f| %>
+    <%= f.text_area :content, size: '55x5', :placeholder => 'Suggest an idea' %>
+    <div class='form_error_message'>
+        <%= @suggestion.errors.full_messages_for(:content).first %>
+    </div>
+    <%= f.submit %>
+<% end %>
 
 <h3><%= link_to 'All games', games_path %></h3>

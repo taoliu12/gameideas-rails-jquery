@@ -26,7 +26,7 @@ class GamesController < ApplicationController
 
     def show
         @game = Game.find(params[:id])
-        # @suggestion = @game.suggestions.build
+        @suggestion = @game.suggestions.build
         # raise @game.suggestions.inspect
     end
     

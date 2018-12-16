@@ -3,6 +3,7 @@ class SuggestionsController < ApplicationController
 
     def index
         @suggestions = @game.suggestions.all
+        render :json => @suggestions
     end
 
     def new
@@ -13,9 +14,9 @@ class SuggestionsController < ApplicationController
         @suggestion = @game.suggestions.build(suggestion_params)
         @suggestion.user = current_user
         if @suggestion.save
-            redirect_to game_suggestions_path
+            redirect_to game_path(@game)
         else
-            render 'suggestions/new'
+            render 'games/show'
         end  
     end
 

@@ -4,10 +4,19 @@ $(function() {
     });
 
     $('a.load_suggestions').on('click', function(e) {
-        alert('Yo');
+
         $.get(this.href).success(function(response) {
-            $('div.suggestions').html(response);
+            $ol = $('div.suggestions ol') //good practice to use $ to prepend vars that ref jquery objects
+            $ol.html("") 
+
+            response.forEach(suggestion => {
+                $ol.append(`<li>${suggestion.content}</li>`);
+            });
         });
-        e.preventDefault();
+        // debugger
+        e.preventDefault(); 
+        // e.stopImmediatePropagation();
+         
+
     });
 });

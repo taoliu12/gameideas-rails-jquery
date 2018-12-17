@@ -14,7 +14,11 @@ class SuggestionsController < ApplicationController
         @suggestion = @game.suggestions.build(suggestion_params)
         @suggestion.user = current_user
         if @suggestion.save
-            render  :json => @suggestion 
+            respond_to do |f| 
+                f.html {redirect_to @game}
+                f.json {render :json => @suggestion }
+            end
+            # render  :json => @suggestion 
         else
             render 'games/show'
         end  

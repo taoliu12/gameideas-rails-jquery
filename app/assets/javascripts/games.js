@@ -33,9 +33,14 @@ $(function() {
         $.ajax({
             type: this.method,
             url: this.action,
-            data: data
-        }).success(function(response) {
+            data: data,
+            dataType: 'JSON'
+        })
+        .success(function(response) {
             $ol.append(`<li>${response.content}</li>`);
+        })
+        .error(function(response) {
+            
         });
         
         e.preventDefault(); 

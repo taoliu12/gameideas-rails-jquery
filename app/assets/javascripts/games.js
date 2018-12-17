@@ -28,13 +28,14 @@ $(function() {
                 'content':  $("#suggestion_content").val()
             }
         }     
-        
+        $ol = $('div.suggestions ol')
+
         $.ajax({
-            type: 'post',
+            type: this.method,
             url: this.action,
             data: data
         }).success(function(response) {
-            console.log(response);
+            $ol.append(`<li>${response.content}</li>`);
         });
         
         e.preventDefault(); 

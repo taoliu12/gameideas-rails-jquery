@@ -3,7 +3,11 @@ class SuggestionsController < ApplicationController
 
     def index
         @suggestions = @game.suggestions.all
-        render :json => @suggestions
+        # respond_to do |f| 
+        #     f.html {redirect_to @game}
+        #     f.json {render :json => @suggestions }
+        # end
+        render :json => @suggestions 
     end
 
     def new

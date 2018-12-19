@@ -1,3 +1,8 @@
+function Suggestion(attributes) {
+    this.content = attributes.content;
+    this.id = attributes.id;
+}
+
 $(function() {
     //Suggestions Checkbox 
     $('.greenlit-chkbox').on('change', function() {
@@ -36,7 +41,10 @@ $(function() {
             dataType: 'JSON'
         })
         .success(function(response) {
-            $ol.append(`<li>${response.content}</li>`);
+            // debugger
+            var suggestion = new Suggestion(response);
+            console.log(suggestion);
+            $ol.append(`<li>${suggestion.content}</li>`);
         })
         .error(function(response) {
             

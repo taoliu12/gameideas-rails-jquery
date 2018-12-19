@@ -1,6 +1,11 @@
 function Suggestion(attributes) {
+    this.status = attributes.status;
     this.content = attributes.content;
     this.id = attributes.id;
+}
+
+Suggestion.prototype.suggestionLi = function() {
+    return `<li>${this.content}</li>`
 }
 
 $(function() {
@@ -40,11 +45,12 @@ $(function() {
             data: $(this).serialize(),
             dataType: 'JSON'
         })
-        .success(function(response) {
+        .success(function(json) {
             // debugger
-            var suggestion = new Suggestion(response);
+            var suggestion = new Suggestion(json);
             console.log(suggestion);
-            $ol.append(`<li>${suggestion.content}</li>`);
+            $ol.append(suggestion.suggestionLi());
+            // $ol.append(`<li>${suggestion.content}</li>`);
         })
         .error(function(response) {
             

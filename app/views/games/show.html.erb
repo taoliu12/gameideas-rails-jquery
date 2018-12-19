@@ -5,7 +5,7 @@
 
 <h2>Recent Suggestions:</h2>
 <ul>
-    <% @game.suggestions.limit(5).each do |suggestion| %>
+    <% @game.suggestions.order('created_at DESC').limit(5).each do |suggestion| %>
         <%= render partial: 'suggestions/suggestion_li', locals: {suggestion: suggestion} %>
     <% end %>
 </ul>
@@ -18,9 +18,6 @@
 
 <%= form_for [@game, @suggestion] do |f| %>
     <%= f.text_area :content, size: '55x5', :placeholder => 'Suggest an idea' %>
-    <div class='form_error_message'>
-        <%= @suggestion.errors.full_messages_for(:content).first %>
-    </div>
     <%= f.submit %>
 <% end %>
 

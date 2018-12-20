@@ -5,17 +5,13 @@ function Suggestion(attributes) {
 }
 
 $(function() {
-    Suggestion.templateSource = $('#suggestions-template').html;
+    Suggestion.templateSource = $('#suggestions-template').html();
     Suggestion.template = Handlebars.compile(Suggestion.templateSource);
 
     Suggestion.prototype.suggestionLi = function() {
         return Suggestion.template(this)
     }
-}
-
-
-
-
+});
 
 $(function() {
     //Suggestions Checkbox 
@@ -55,11 +51,9 @@ $(function() {
             dataType: 'JSON'
         })
         .success(function(json) {
-            // debugger
-            var suggestion = new Suggestion(json);
-            console.log(suggestion);
+            var suggestion = new Suggestion(json);     
+            $ol = $('div.suggestions ol');
             $ol.append(suggestion.suggestionLi());
-            // $ol.append(`<li>${suggestion.content}</li>`);
         })
         .error(function(response) {
             

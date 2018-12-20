@@ -22,3 +22,11 @@
 <% end %>
 
 <h3><%= link_to 'All games', games_path %></h3>
+
+<script id="suggestions-template" type="text/x-handlebars-template">
+    <li class=""> 
+        <p>{{content}}</p>
+        <p>submitted by <%= current_user.username %></p>
+        <p>Status: Pending</p>
+    </li>
+</script>

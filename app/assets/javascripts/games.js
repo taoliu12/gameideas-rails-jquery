@@ -4,9 +4,18 @@ function Suggestion(attributes) {
     this.id = attributes.id;
 }
 
-Suggestion.prototype.suggestionLi = function() {
-    return `<li>${this.content}</li>`
+$(function() {
+    Suggestion.templateSource = $('#suggestions-template').html;
+    Suggestion.template = Handlebars.compile(Suggestion.templateSource);
+
+    Suggestion.prototype.suggestionLi = function() {
+        return Suggestion.template(this)
+    }
 }
+
+
+
+
 
 $(function() {
     //Suggestions Checkbox 
@@ -59,3 +68,4 @@ $(function() {
         e.preventDefault(); 
     });
 });
+

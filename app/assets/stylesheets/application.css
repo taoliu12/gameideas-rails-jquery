@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require mdn
  */
 
  div.field_with_errors input {

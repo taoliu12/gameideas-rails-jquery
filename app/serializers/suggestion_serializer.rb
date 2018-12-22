@@ -1,3 +1,3 @@
 class SuggestionSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :content, :status
 end

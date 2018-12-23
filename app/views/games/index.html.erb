@@ -11,7 +11,7 @@
 
 Games you made suggestions to:
 <ol>
-<% current_user.suggested_games.each do |g| %>
+<% current_user.suggested_games.uniq.each do |g| %>
     <li> <%= link_to g.title, game_path(g) %></li>
 <% end %>
 </ol>

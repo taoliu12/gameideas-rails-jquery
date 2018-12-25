@@ -10,11 +10,8 @@
 </ol>
 
 <p>Games you made suggestions to:</p>
-<ol>
-<% current_user.suggested_games.uniq.each do |g| %>
-    <li> <%= link_to g.title, game_path(g) %></li>
-<% end %>
-</ol>
+<%= render 'games/suggested_games' %>
+
 <h2><%= link_to 'Make a new game', new_game_path %></h2>
 
 <h4>Logged in as <%= current_user.username %> | <%= link_to "Logout", logout_path %></h4>

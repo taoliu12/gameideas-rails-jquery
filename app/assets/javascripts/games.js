@@ -24,7 +24,7 @@ $(function() {
         $.get(this.href).success(function(response) {
             $ol = $('div.suggestions ol') //good practice to use $ to prepend vars that ref jquery objects
             $ol.html("") 
-            console.log(response)
+
             response.forEach(suggestion => {
                 $ol.append(`<li>${suggestion.content}</li>`);
             });

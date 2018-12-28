@@ -1,7 +1,25 @@
-<h1><%= @game.title %></h1>
+<p><a href="#" class="js-next" data-id="<%=@game.id%>">Next...</a></p>
+
+<h1 class='gameTitle'><%= @game.title %></h1>
 <p>Genre: <%= @game.genre.name %></p>
 <p><%= @game.summary %></p>
 <p>Created by <%= @game.user.username %></p>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-next").on("click", function(event) {
+    event.preventDefault()
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    $.get("/games/" + nextId + ".json", function(data) {
+    //   $(".username").text(data["user"]["username"]);
+      $(".gameTitle").text(data["title"]) ;
+      $(".gameSummary").text(data["summary"]);
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", data["id"]);
+    });
+  });
+});
+</script>
 
 <h2>Recent Suggestions:</h2>
 <ul>

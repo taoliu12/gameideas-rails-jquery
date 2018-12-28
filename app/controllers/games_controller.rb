@@ -27,7 +27,10 @@ class GamesController < ApplicationController
     def show
         @game = Game.find(params[:id])
         @suggestion = @game.suggestions.build
-        # raise @game.suggestions.inspect
+        respond_to do |format| 
+            format.html 
+            format.json { render json: @game }
+        end
     end
     
     def edit

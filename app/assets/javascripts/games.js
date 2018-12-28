@@ -63,3 +63,34 @@ $(function() {
     });
 });
 
+////////////////////////////////
+/////// Prev & Next Game ///////
+////////////////////////////////
+$(function () {
+    $(".js-next").on("click", function(event) {
+      event.preventDefault()
+      var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+      $.get("/games/" + nextId + ".json", function(data) {
+        $(".username").text('Created by ' + data["user"]["username"]);
+        $(".genre").text('Genre: ' + data["genre"]['name']) ;
+        $(".gameTitle").text(data["title"]) ;
+        $(".gameSummary").text(data["summary"]);
+        // re-set the id to current on the link
+        $(".js-next").attr("data-id", data["id"]);
+      });
+    });
+  
+    $(".js-prev").on("click", function(event) {
+      event.preventDefault()
+      var nextId = parseInt($(".js-next").attr("data-id")) - 1;
+      $.get("/games/" + nextId + ".json", function(data) {
+        $(".username").text('Created by ' + data["user"]["username"]);
+        $(".genre").text('Genre: ' + data["genre"]['name']) ;
+        $(".gameTitle").text(data["title"]) ;
+        $(".gameSummary").text(data["summary"]);
+        // re-set the id to current on the link
+        $(".js-next").attr("data-id", data["id"]);
+      });
+    });
+  
+  });

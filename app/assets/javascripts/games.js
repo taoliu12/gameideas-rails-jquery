@@ -77,6 +77,8 @@ $(function () {
         $(".gameSummary").text(data["summary"]);
         // re-set the id to current on the link
         $(".js-next").attr("data-id", data["id"]);
+        // re-set id in load suggestions link
+        $('a.load_suggestions').attr('href', "/games/" + data["id"] + "/suggestions")
       });
     });
   
@@ -90,6 +92,8 @@ $(function () {
         $(".gameSummary").text(data["summary"]);
         // re-set the id to current on the link
         $(".js-next").attr("data-id", data["id"]);
+        // re-set id in load suggestions link
+        $('a.load_suggestions').attr('href', "/games/" + data["id"] + "/suggestions")
       });
     });
   

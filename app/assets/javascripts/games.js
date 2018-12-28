@@ -79,7 +79,14 @@ $(function () {
         $(".js-next").attr("data-id", data["id"]);
         // re-set id in load suggestions link
         $('a.load_suggestions').attr('href', "/games/" + data["id"] + "/suggestions");
+        // clear any loaded suggestions
         $('.suggestions ol').text('');
+        // re-set id in suggestions form
+        $('#new_suggestion').attr('action', "/games/" + data["id"] + "/suggestions");
+        // re_enable submit button
+        $('#new_suggestion input').prop('disabled', false);
+        // clear textarea
+        $('#new_suggestion textarea').val('');
       });
     });
   
@@ -95,7 +102,14 @@ $(function () {
         $(".js-next").attr("data-id", data["id"]);
         // re-set id in load suggestions link
         $('a.load_suggestions').attr('href', "/games/" + data["id"] + "/suggestions");
+        // clear any loaded suggestions
         $('.suggestions ol').text('');
+        // re-set id in suggestions form
+        $('#new_suggestion').attr('action', "/games/" + data["id"] + "/suggestions");
+        // re_enable submit button
+        $('#new_suggestion input').prop('disabled', false);
+        // clear textarea
+        $('#new_suggestion textarea').val('');
       });
     });
   

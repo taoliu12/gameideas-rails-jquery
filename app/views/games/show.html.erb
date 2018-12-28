@@ -1,9 +1,9 @@
 <p><a href="#" class="js-next" data-id="<%=@game.id%>">Next...</a></p>
 
 <h1 class='gameTitle'><%= @game.title %></h1>
-<p>Genre: <%= @game.genre.name %></p>
-<p><%= @game.summary %></p>
-<p>Created by <%= @game.user.username %></p>
+<p class='genre'>Genre: <%= @game.genre.name %></p>
+<p class='gameSummary'><%= @game.summary %></p>
+<p class='username'>Created by <%= @game.user.username %></p>
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
@@ -11,7 +11,8 @@ $(function () {
     event.preventDefault()
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.get("/games/" + nextId + ".json", function(data) {
-    //   $(".username").text(data["user"]["username"]);
+      $(".username").text('Created by ' + data["user"]["username"]);
+      $(".genre").text('Genre: ' + data["genre"]['name']) ;
       $(".gameTitle").text(data["title"]) ;
       $(".gameSummary").text(data["summary"]);
       // re-set the id to current on the link

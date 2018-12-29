@@ -1,0 +1,5 @@
+<ol>
+<% current_user.suggested_games.uniq.each do |g| %>
+    <li> <%= link_to g.title, game_path(g) %></li>
+<% end %>
+</ol>

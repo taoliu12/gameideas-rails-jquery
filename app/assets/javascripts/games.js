@@ -4,15 +4,24 @@ function Suggestion(attributes) {
     this.id = attributes.id;
 }
 
+
 $(function() {
+// Handlebars suggestionLi template
     Suggestion.templateSource = $('#suggestions-template').html();
     Suggestion.template = Handlebars.compile(Suggestion.templateSource);
 
     Suggestion.prototype.suggestionLi = function() {
         return Suggestion.template(this)
     }
+
+    // Suggestion.prototype.recentSuggestions = function() {
+    //     return Suggestion.template(this)  
+    // }
 });
 
+////////////////////////////////
+/////// Make & Load suggestions/
+////////////////////////////////
 $(function() {
     //Suggestions Checkbox 
     $('.greenlit-chkbox').on('change', function() {

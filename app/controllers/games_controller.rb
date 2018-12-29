@@ -1,5 +1,8 @@
 class GamesController < ApplicationController
     before_action :authentication_required
+    def my_games
+        @games  = Game.all
+    end
 
     def index
         @games = Game.all

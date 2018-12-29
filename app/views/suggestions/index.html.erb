@@ -1,6 +1,6 @@
 <h1>All Suggestions for <%= link_to @game.title, game_path(@game) %>:</h1>
 <ol>
-    <%= render :collection => @game.suggestions, :partial => 'suggestions/suggestion_li', :as => 'suggestion' %>
+    <%= render :collection => @game.suggestions.newest_to_oldest, :partial => 'suggestions/suggestion_li', :as => 'suggestion' %>
     <%# @game.suggestions.each do |suggestion| %>
         <%#= render partial: 'suggestions/suggestion_li', locals: {suggestion: suggestion} %>
     <%# end %>

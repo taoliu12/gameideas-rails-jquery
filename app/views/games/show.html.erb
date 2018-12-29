@@ -5,7 +5,7 @@
 
 <h2>Recent Suggestions:</h2>
 <ul>
-    <% @game.suggestions.limit(5).each do |suggestion| %>
+    <% @game.suggestions.recent.each do |suggestion| %>
         <%= render partial: 'suggestions/suggestion_li', locals: {suggestion: suggestion} %>
     <% end %>
 </ul>

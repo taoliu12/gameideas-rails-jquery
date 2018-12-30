@@ -2,7 +2,11 @@
 <p>Genre: <%= @game.genre.name %></p>
 <p><%= @game.summary %></p>
 <p>Created by <%= @game.user.username %></p>
-<h3><%= link_to 'Edit Game', edit_game_path(@game) %></h3>
+
+<% if @game.user == current_user %>
+    <h3><%= link_to 'Edit Game', edit_game_path(@game) %></h3>
+<%end %>
+
 
 <h2>Recent Suggestions:</h2>
 <ul>

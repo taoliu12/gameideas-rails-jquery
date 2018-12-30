@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
     before_action :authentication_required
+    
     def my_games
         @user = current_user
         @games = @user.games
@@ -40,7 +41,9 @@ class GamesController < ApplicationController
     end
     
     def update
-        
+        @game = Game.find(params[:id])
+        @game.update(game_params)
+        redirect_to game_path(@game)
     end
     
     def destroy

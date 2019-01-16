@@ -3,12 +3,14 @@
 <%= form_for @game do |f| %>
     <p>Title (e.g. Mario Brothers): </p>
     <%= f.text_field :title, :class => 'form_field' %>
+
     <div class='form_error_message'>
         <%= @game.errors.full_messages_for(:title).first %>
     </div>
 
     <p>Summary (e.g. is your game a 2D platformer? How will the graphics look?):</p>   
     <%= f.text_area :summary, size: "50x10", :class => 'form_field' %>
+    
     <div class='form_error_message'>
         <%= @game.errors.full_messages_for(:summary).first %>
     </div>

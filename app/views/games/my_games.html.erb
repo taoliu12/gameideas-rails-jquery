@@ -2,6 +2,8 @@
 
 <h1>My games</h1>
 
+<p>Games you created:</p>
+
 <ol>
 <% @games.each do |g| %>
     <li> <%= link_to g.title, game_path(g) %> </li>
@@ -11,7 +13,7 @@
 <p>Games you made suggestions to:</p>
 <%= render 'games/suggested_games' %>
 
-<p>Your Genres</p>
+<p>Genres of your games:</p>
 
 <ol>
 <% @genres.each do |g| %>

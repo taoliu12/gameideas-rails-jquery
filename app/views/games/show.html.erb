@@ -1,10 +1,12 @@
 <h1><%= @game.title %></h1>
 <p>Genre: <%= @game.genre.name %></p>
 <p><%= @game.summary %></p>
+
 <% if @game.user == current_user %>
     <h3><%= link_to 'Edit', edit_game_path(@game) %> | <%= link_to 'Delete', game_path(@game),
     data: {:confirm => 'Are you sure?'}, :method => :delete %> </h3>
 <%end %>
+
 <p>Created by <%= @game.user.username %></p>
 
 <h2>Recent Suggestions:</h2>
@@ -13,6 +15,7 @@
         <%= render partial: 'suggestions/suggestion_li', locals: {suggestion: suggestion} %>
     <% end %>
 </ul>
+
 <h3><%= link_to 'All suggestions', game_suggestions_path(@game) %></h3>
 
 <h3><%= link_to 'Make suggestion', new_game_suggestion_path(@game) %></h3>

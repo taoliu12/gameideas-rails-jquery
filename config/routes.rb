@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'games#index'
+  
   get '/games/my_games' => 'games#my_games', as: 'my_games'
   get '/games/newest_to_oldest' => 'games#newest_to_oldest', as: 'games_newest_to_oldest'
 

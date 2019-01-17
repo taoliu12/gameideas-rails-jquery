@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to root_path
       else
-        error_message 
+        error_message #private method 
         render :new
       end
     end
@@ -27,6 +27,8 @@ class SessionsController < ApplicationController
     session.clear
     redirect_to '/login'
   end
+
+  private
 
   def error_message
     if params[:user][:username] ==''

@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to root_path
       else
-        error_message #private method 
+        error_message 
         render :new
       end
     end

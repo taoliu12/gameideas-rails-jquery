@@ -8,18 +8,27 @@ class GamesController < ApplicationController
     end
 
     def index
-        # raise params.inspect
         @genres = Genre.all
         if params[:genre_id]
-            genre = Genre.find_by(id: params[:genre_id])
-            @games = genre.games
+            @genre = Genre.find_by(id: params[:genre_id])
+            @games = @genre.games
         else 
             @games = Game.all
         end
+
+        @games_list_order = 'Oldest to Newest'
     end
 
     def newest_to_oldest
-        @games = Game.newest_to_oldest
+        @genres = Genre.all
+        if params[:genre_id]
+            @genre = Genre.find_by(id: params[:genre_id])
+            @games = @genre.games
+        else 
+            @games = Game.newest_to_oldest
+        end
+        
+        render :index
     end
 
     def new

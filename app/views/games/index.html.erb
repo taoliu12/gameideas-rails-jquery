@@ -1,7 +1,15 @@
 
 
 <h1>All games</h1>
-<p>Order: Oldest to Newest | <%= link_to 'Newest to Oldest', games_newest_to_oldest_path %></p>
+<% if @games_list_order == 'Oldest to Newest' %>
+    <p>All games: Oldest to Newest | <%= link_to 'Newest to Oldest', games_newest_to_oldest_path %></p>
+<% else %>
+    <p>All games: <%= link_to 'Oldest to Newest', games_path %> | Newest to Oldest</p>
+<% end %>
+
+<% if @games.empty? %>
+    <p>   No games in the <%= @genre.name %> genre.</p>
+<% end %>
 
 <ol>
 <% @games.each do |g| %>

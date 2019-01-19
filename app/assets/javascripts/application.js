@@ -17,3 +17,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require handlebars.min-v3.0.5

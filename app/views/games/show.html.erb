@@ -1,23 +1,35 @@
-<h1><%= @game.title %></h1>
-<p>Genre: <%= @game.genre.name %></p>
-<p><%= @game.summary %></p>
+<p><a href="#" class="js-prev" data-id="<%=@game.id%>">Prev...</a></p>
+<p><a href="#" class="js-next" data-id="<%=@game.id%>">Next...</a></p>
 
-<% if @game.user == current_user %>
-    <h3><%= link_to 'Edit', edit_game_path(@game) %> | <%= link_to 'Delete', game_path(@game),
-    data: {:confirm => 'Are you sure?'}, :method => :delete %> </h3>
-<%end %>
-
-<p>Created by <%= @game.user.username %></p>
+<h1 class='gameTitle'><%= @game.title %></h1>
+<p class='genre'>Genre: <%= @game.genre.name %></p>
+<p class='gameSummary'><%= @game.summary %></p>
+<p class='username'>Created by <%= @game.user.username %></p>
 
 <h2>Recent Suggestions:</h2>
 <ul>
-    <% @game.suggestions.recent.each do |suggestion| %>
+    <% @game.suggestions.order('created_at DESC').limit(5).each do |suggestion| %>
         <%= render partial: 'suggestions/suggestion_li', locals: {suggestion: suggestion} %>
     <% end %>
 </ul>
 
-<h3><%= link_to 'All suggestions', game_suggestions_path(@game) %></h3>
+<p><%= link_to 'Load suggestions', game_suggestions_path(@game), :class => 'load_suggestions' %></p>
 
-<h3><%= link_to 'Make suggestion', new_game_suggestion_path(@game) %></h3>
+<div class='suggestions'>
+    <ol></ol>
+</div>
+
+<%= form_for [@game, @suggestion] do |f| %>
+    <%= f.text_area :content, size: '55x5', :placeholder => 'Suggest an idea' %>
+    <%= f.submit %>
+<% end %>
 
 <h3><%= link_to 'All games', games_path %></h3>
+
+<script id="suggestions-template" type="text/x-handlebars-template">
+    <li> 
+        <p>{{content}}</p>
+        <p>submitted by <%= current_user.username %></p>
+        <p>Status: Pending</p>
+    </li>
+</script>

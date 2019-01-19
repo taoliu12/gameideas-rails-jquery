@@ -1,7 +1,15 @@
 
 
 <h1>All games</h1>
-<p>Order: Oldest to Newest | <%= link_to 'Newest to Oldest', games_newest_to_oldest_path %></p>
+<% if @games_list_order == 'Oldest to Newest' %>
+    <p>All games: Oldest to Newest | <%= link_to 'Newest to Oldest', games_newest_to_oldest_path %></p>
+<% else %>
+    <p>All games: <%= link_to 'Oldest to Newest', games_path %> | Newest to Oldest</p>
+<% end %>
+
+<% if @games.empty? %>
+    <p>   No games in the <%= @genre.name %> genre.</p>
+<% end %>
 
 <ol>
 <% @games.each do |g| %>
@@ -9,9 +17,18 @@
 <% end %>
 </ol>
 
+<p>Filter by Genre</p>
+
+<%= form_tag(games_path, method: :get) do %>
+    <%= select_tag :genre_id, options_from_collection_for_select(@genres, "id", "name") %>
+    <%= submit_tag 'Search', name: nil %>
+<% end %>
+
 <p>Games you made suggestions to:</p>
 <%= render 'games/suggested_games' %>
 
 <h2><%= link_to 'Make a new game', new_game_path %></h2>
+
+<h2><%= link_to 'My Games', my_games_path %></h2>
 
 <h4>Logged in as <%= current_user.username %> | <%= link_to "Logout", logout_path %></h4>

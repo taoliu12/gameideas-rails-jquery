@@ -12,15 +12,5 @@
  *
  *= require_tree .
  *= require_self
- *= require mdn
  */
-
- div.field_with_errors input {
-     border: 1px solid red
- }
-
- .form_error_message {
-     font-size: .8em;
-     font-style: italic;
- }
 

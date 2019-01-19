@@ -4,21 +4,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # raise omniauth_email.inspect
-    if request.env['omniauth.auth'] #omniauth login
+    if request.env['omniauth.auth'] 
+      ### omniauth login
       omniauth_hash = request.env['omniauth.auth'][:info]
-      user = User.find_or_create_by_omniauth(omniauth_hash) #custom omniauth helper in User model
-      # raise user.errors.inspect
+      user = User.find_or_create_by_omniauth(omniauth_hash) 
       session[:user_id] = user.id 
       redirect_to root_path 
-    else #native login
+    else 
+      ### regular login
       @user = User.find_by(username: params[:user][:username])
       if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
         redirect_to root_path
       else
-        # redirect_to '/login'
-        error_message
+        error_message 
         render :new
       end
     end
@@ -28,6 +27,8 @@ class SessionsController < ApplicationController
     session.clear
     redirect_to '/login'
   end
+
+  private
 
   def error_message
     if params[:user][:username] ==''

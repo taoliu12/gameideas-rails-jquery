@@ -1,10 +1,14 @@
 <li class=<%=class_for_suggestion_li(suggestion)%> > 
     <%= suggestion.content %>
+
     <p>submitted by <%= suggestion.user.username %></p>
+
     <p>Status: <%=greenlit_or_pending(suggestion)%></p>
+
     <% if current_user == @game.user %>
         <%= form_for([@game, suggestion]) do |f| %>
             <%= f.check_box :status, class: 'greenlit-chkbox', checked: suggestion.greenlit? %>
+            
             <%# dont forget to change Jquery selector if changing checkbox class name %>
         <% end %>
     <% end %>

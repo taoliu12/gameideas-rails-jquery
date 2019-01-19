@@ -1,12 +1,34 @@
 class GamesController < ApplicationController
     before_action :authentication_required
+    
+    def my_games
+        @user = current_user
+        @games = @user.games
+        @genres = @user.genres.uniq
+    end
 
     def index
-        @games = Game.all
+        @genres = Genre.all
+        if params[:genre_id]
+            @genre = Genre.find_by(id: params[:genre_id])
+            @games = @genre.games
+        else 
+            @games = Game.all
+        end
+
+        @games_list_order = 'Oldest to Newest'
     end
 
     def newest_to_oldest
-        @games = Game.newest_to_oldest
+        @genres = Genre.all
+        if params[:genre_id]
+            @genre = Genre.find_by(id: params[:genre_id])
+            @games = @genre.games
+        else 
+            @games = Game.newest_to_oldest
+        end
+        
+        render :index
     end
 
     def new
@@ -34,15 +56,20 @@ class GamesController < ApplicationController
     end
     
     def edit
-        
+        @game = Game.find(params[:id])
     end
     
     def update
-        
+        @game = Game.find(params[:id])
+        @game.update(game_params)
+        redirect_to game_path(@game)
     end
     
     def destroy
-        
+        @game = Game.find(params[:id])
+        @game.destroy
+        flash[:message] = "Game was successfully deleted."
+        redirect_to games_path
     end
 
     private

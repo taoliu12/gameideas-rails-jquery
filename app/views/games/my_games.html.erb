@@ -1,7 +1,9 @@
 
 
-<h1>All games</h1>
-<p>Order: <%= link_to 'Oldest to Newest', games_path %> | Newest to Oldest</p>
+<h1>My games</h1>
+
+<p>Games you created:</p>
+
 <ol>
 <% @games.each do |g| %>
     <li> <%= link_to g.title, game_path(g) %> </li>
@@ -11,7 +13,15 @@
 <p>Games you made suggestions to:</p>
 <%= render 'games/suggested_games' %>
 
+<p>Genres of your games:</p>
+
+<ol>
+<% @genres.each do |g| %>
+    <li> <%= g.name %> </li>
+<% end %>
+</ol>
+
+
 <h2><%= link_to 'Make a new game', new_game_path %></h2>
 
 <h4>Logged in as <%= current_user.username %> | <%= link_to "Logout", logout_path %></h4>
-

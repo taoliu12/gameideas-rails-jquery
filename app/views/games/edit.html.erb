@@ -1,1 +1,32 @@
-index
+<h1>Edit <%= @game.title %></h1> 
+
+<%= form_for @game do |f| %>
+    <p>Title (e.g. Mario Brothers): </p>
+    <%= f.text_field :title, :class => 'form_field' %>
+
+    <div class='form_error_message'>
+        <%= @game.errors.full_messages_for(:title).first %>
+    </div>
+
+    <p>Summary (e.g. is your game a 2D platformer? How will the graphics look?):</p>   
+    <%= f.text_area :summary, size: "50x10", :class => 'form_field' %>
+    
+    <div class='form_error_message'>
+        <%= @game.errors.full_messages_for(:summary).first %>
+    </div>
+    
+    <div class='form_error_message'>
+        <%= @game.errors.full_messages_for(:user).first %>
+    </div>
+
+    <p>Genre</p>
+    <div class='form_error_message'>
+        <%= @game.errors.full_messages_for(:genre).first %>
+    </div>
+
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: true) %>
+
+    <%= f.submit %>
+<% end %>
+
+<h3><%= link_to 'All games', games_path %></h3>

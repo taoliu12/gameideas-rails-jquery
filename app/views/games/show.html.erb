@@ -1,5 +1,11 @@
-<p><a href="#" class="js-prev" data-id="<%=@game.id%>">Prev...</a></p>
-<p><a href="#" class="js-next" data-id="<%=@game.id%>">Next...</a></p>
+<div class="nav-controls-container">
+    <div class="nav-controls-column">
+        <a href="#" class="js-prev" data-id="<%=@game.id%>">Previous Game</a>
+    </div>
+    <div class="nav-controls-column">
+        <a href="#" class="js-next" data-id="<%=@game.id%>">Next Game</a>
+    </div>
+</div>
 
 <h1 class='gameTitle'><%= @game.title %></h1>
 <p class='genre'>Genre: <%= @game.genre.name %></p>
@@ -21,6 +27,7 @@
 
 <%= form_for [@game, @suggestion] do |f| %>
     <%= f.text_area :content, size: '55x5', :placeholder => 'Suggest an idea' %>
+    <br>
     <%= f.submit %>
 <% end %>
 

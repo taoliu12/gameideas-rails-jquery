@@ -1,3 +1,16 @@
 // Place all the styles related to the games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.nav-controls-container {
+  display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.nav-controls-column {
+  flex: 50%;
+  padding: 10px;
+  text-align: center;
+}
+

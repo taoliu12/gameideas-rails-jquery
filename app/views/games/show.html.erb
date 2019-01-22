@@ -12,13 +12,6 @@
 <p class='gameSummary'><%= @game.summary %></p>
 <p class='username'>Created by <%= @game.user.username %></p>
 
-<h2>Recent Suggestions:</h2>
-<ul>
-    <% @game.suggestions.order('created_at DESC').limit(5).each do |suggestion| %>
-        <%= render partial: 'suggestions/suggestion_li', locals: {suggestion: suggestion} %>
-    <% end %>
-</ul>
-
 <p><%= link_to 'Load suggestions', game_suggestions_path(@game), :class => 'load_suggestions' %></p>
 
 <div class='suggestions'>

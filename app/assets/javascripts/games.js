@@ -35,7 +35,11 @@ $(function() {
             $ol.html("") 
 
             response.forEach(suggestion => {
-                $ol.append(`<li>${suggestion.content}</li>`);
+                $ol.append(
+                    `<li>
+                        <p>${suggestion.content}</p>
+                        submitted by ${suggestion.user.username}
+                    </li>`);
             });
         });
         // debugger

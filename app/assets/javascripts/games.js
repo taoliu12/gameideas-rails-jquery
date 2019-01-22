@@ -4,9 +4,8 @@ function Suggestion(attributes) {
     this.id = attributes.id;
 }
 
-
 $(function() {
-// Handlebars suggestionLi template
+    // generate Handlebars suggestionLi template
     Suggestion.templateSource = $('#suggestions-template').html();
     Suggestion.template = Handlebars.compile(Suggestion.templateSource);
 
@@ -19,15 +18,8 @@ $(function() {
     // }
 });
 
-////////////////////////////////
-/////// Make & Load suggestions/
-////////////////////////////////
+/////// Make & Load suggestions //////
 $(function() {
-    //Suggestions Checkbox 
-    $('.greenlit-chkbox').on('change', function() {
-        $(this).parents('form').trigger('submit')
-    });
-
     //Load suggestions 
     $('a.load_suggestions').on('click', function(e) {
         $.get(this.href).success(function(response) {
@@ -76,9 +68,7 @@ $(function() {
     });
 });
 
-////////////////////////////////
 /////// Prev & Next Game ///////
-////////////////////////////////
 $(function () {
     $(".js-next").on("click", function(event) {
       event.preventDefault()
@@ -125,5 +115,11 @@ $(function () {
         $('#new_suggestion textarea').val('');
       });
     });
-  
-  });
+});
+
+$(function() {
+    //Suggestions Checkbox 
+    $('.greenlit-chkbox').on('change', function() {
+        $(this).parents('form').trigger('submit')
+    });
+}); 

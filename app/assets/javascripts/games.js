@@ -2,6 +2,7 @@ function Suggestion(attributes) {
     this.status = attributes.status;
     this.content = attributes.content;
     this.id = attributes.id;
+    this.author = attributes.user.username;
 }
 
 $(function() {

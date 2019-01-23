@@ -1,3 +1,10 @@
+function Game(attributes) {
+    this.title = attributes.title;
+    this.summary = attributes.summary;
+    // this.created_at = attributes.created_at;
+    // this.author = attributes.user.username;
+}
+
 function Suggestion(attributes) {
     this.status = attributes.status;
     this.content = attributes.content;

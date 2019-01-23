@@ -23,20 +23,16 @@ $(function() {
     //Load suggestions 
     $('a.load_suggestions').on('click', function(e) {
         $.get(this.href).success(function(response) {
-            $ol = $('div.suggestions ol') //good practice to use $ to prepend vars that ref jquery objects
+            //good practice to use $ to prepend vars that ref jquery objects
+            $ol = $('div.suggestions ol') 
             $ol.html("") 
 
-            response.forEach(suggestion => {
-                $ol.append(
-                    `<li>
-                        <p>${suggestion.content}</p>
-                        submitted by ${suggestion.user.username}
-                    </li>`);
+            response.forEach(json => {
+                var suggestion = new Suggestion(json);     
+                $ol.append(suggestion.suggestionLi());
             });
         });
-        // debugger
         e.preventDefault(); 
-        // e.stopImmediatePropagation();
     });
 
     //Post suggestion
@@ -63,7 +59,6 @@ $(function() {
         .error(function(response) {
             
         });
-        
         e.preventDefault(); 
     });
 });

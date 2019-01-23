@@ -10,13 +10,15 @@
 <h1 class='gameTitle'><%= @game.title %></h1>
 <p class='genre'>Genre: <%= @game.genre.name %></p>
 <p class='gameSummary'><%= @game.summary %></p>
-<p class='username'>Created by <%= @game.user.username %></p>
+<p class='username author'>Created by <%= @game.user.username %></p>
 
 <p><%= link_to 'Load suggestions', game_suggestions_path(@game), :class => 'load_suggestions' %></p>
 
 <div class='suggestions'>
     <ol></ol>
 </div>
+
+<br>
 
 <%= form_for [@game, @suggestion] do |f| %>
     <%= f.text_area :content, size: '55x5', :placeholder => 'Suggest an idea' %>
@@ -29,6 +31,6 @@
 <script id="suggestions-template" type="text/x-handlebars-template">
     <li> 
         <p>{{content}}</p>
-        <p>submitted by <%= current_user.username %></p>
+        <p class='author'>Submitted by <%= current_user.username %></p>
     </li>
 </script>

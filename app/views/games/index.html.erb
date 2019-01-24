@@ -7,7 +7,9 @@
     <p>All games: <%= link_to 'Oldest to Newest', games_path, class: 'sort-game-oldest' %> | Newest to Oldest</p>
 <% end %>
 
-<div class='all-games'></div>
+<div class='all-games'>
+    <ol></ol>
+</div>
 
 <% if @games.empty? %>
     <p>   No games in the <%= @genre.name %> genre.</p>

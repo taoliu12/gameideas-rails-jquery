@@ -10,13 +10,17 @@ $(function() {
     Game.template = Handlebars.compile(Game.templateSource);
 
     Game.prototype.gameLi = function() {
-        return Game.template(this)
+        return Suggestion.template(this)
     }
 
     $('a.sort-game-oldest').on('click', function(e) {
         $.get(this.href).success(function(response) {
-            $('.all-games').text("games"); 
-            console.log(response)
+            $ol = $('.all-games ol');
+            $ol.html("ol") 
+            
+            response.forEach(json => {
+                game = new Game(json);
+            });
         });
         e.preventDefault(); 
     }); 

@@ -27,11 +27,13 @@ $(function() {
 
 $(function() {
     $('a.sort-game-oldest').on('click', function(e) {
-        alert('a')
+        $.get(this.href).success(function(response) {
+            $('.all-games').text("games"); 
+        });
         e.preventDefault(); 
     });
 
-    $('.all-games').text("games"); 
+    
 })
 
 /////// Make & Load suggestions //////

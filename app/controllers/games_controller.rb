@@ -17,6 +17,11 @@ class GamesController < ApplicationController
         end
 
         @games_list_order = 'Oldest to Newest'
+
+        respond_to do |f| 
+            f.html { }
+            f.json {render :json => @games }
+        end
     end
 
     def newest_to_oldest

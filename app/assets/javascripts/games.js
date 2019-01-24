@@ -29,6 +29,7 @@ $(function() {
     $('a.sort-game-oldest').on('click', function(e) {
         $.get(this.href).success(function(response) {
             $('.all-games').text("games"); 
+            console.log(response)
         });
         e.preventDefault(); 
     });

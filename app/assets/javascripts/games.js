@@ -11,20 +11,28 @@ function Suggestion(attributes) {
     this.id = attributes.id;
     this.author = attributes.user.username;
 }
-
+ 
 $(function() {
+    
     // generate Handlebars suggestionLi template
     Suggestion.templateSource = $('#suggestions-template').html();
     Suggestion.template = Handlebars.compile(Suggestion.templateSource);
-
+    
+    // create a method on the prototype
     Suggestion.prototype.suggestionLi = function() {
         return Suggestion.template(this)
     }
-
-    // Suggestion.prototype.recentSuggestions = function() {
-    //     return Suggestion.template(this)  
-    // }
 });
+
+
+$(function() {
+    $('a.sort-game-oldest').on('click', function(e) {
+        alert('a')
+        e.preventDefault(); 
+    });
+
+    $('.all-games').text("games"); 
+})
 
 /////// Make & Load suggestions //////
 $(function() {

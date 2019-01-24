@@ -17,6 +17,7 @@ $(function() {
     $('a.sort-game-oldest').on('click', function(e) {
         $.get(this.href).success(function(response) {
             let $ol = $('.all-games ol'); 
+            $ol.html("")
             
             response.forEach(json => {
                 game = new Game(json);

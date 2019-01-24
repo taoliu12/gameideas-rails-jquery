@@ -8,18 +8,18 @@
 <% end %>
 
 <div class='all-games'>
-    <ol></ol>
+<ol>
+<% @games.each do |g| %>
+    <li> <%= link_to g.title, game_path(g) %> </li>
+<% end %>
+</ol>
 </div>
 
 <% if @games.empty? %>
     <p>   No games in the <%= @genre.name %> genre.</p>
 <% end %>
 
-<ol>
-<% @games.each do |g| %>
-    <li> <%= link_to g.title, game_path(g) %> </li>
-<% end %>
-</ol>
+
 
 <p>Filter by Genre</p>
 

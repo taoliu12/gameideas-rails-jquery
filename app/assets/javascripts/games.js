@@ -6,15 +6,20 @@ function Game(attributes) {
 }
 
 $(function() {
+    Game.templateSource = $('#games-template').html();
+    Game.template = Handlebars.compile(Game.templateSource);
+
+    Game.prototype.gameLi = function() {
+        return Game.template(this)
+    }
+
     $('a.sort-game-oldest').on('click', function(e) {
         $.get(this.href).success(function(response) {
             $('.all-games').text("games"); 
             console.log(response)
         });
         e.preventDefault(); 
-    });
-
-    
+    }); 
 })
 
 /////// Prev & Next Game ///////
@@ -64,4 +69,12 @@ $(function () {
         $('#new_suggestion textarea').val('');
       });
     });
+});
+
+$("a.js-Delete").on('click', function() {
+    $(this).parent().fadeOut();
+    $.post(this.href, "_method=delete", function(data) {
+        addProjectListeners();
+    });
+    return false;
 });

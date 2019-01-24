@@ -35,6 +35,12 @@
 
 <h4>Logged in as <%= current_user.username %> | <%= link_to "Logout", logout_path %></h4>
 
+<script id="games-template" type="text/x-handlebars-template">
+    <li> 
+        <p>{{title}}</p>
+    </li>
+</script>
+
 <script id="suggestions-template" type="text/x-handlebars-template">
     <li> 
         <p>{{content}}</p>

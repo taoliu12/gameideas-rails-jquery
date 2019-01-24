@@ -1,4 +1,5 @@
 function Game(attributes) {
+    this.id = attributes.id;
     this.title = attributes.title;
     this.summary = attributes.summary;
     // this.created_at = attributes.created_at;
@@ -10,16 +11,17 @@ $(function() {
     Game.template = Handlebars.compile(Game.templateSource);
 
     Game.prototype.gameLi = function() {
-        return Suggestion.template(this)
+        return Game.template(this)
     }
 
     $('a.sort-game-oldest').on('click', function(e) {
         $.get(this.href).success(function(response) {
-            $ol = $('.all-games ol');
-            $ol.html("ol") 
+            let $ol = $('.all-games ol'); 
             
             response.forEach(json => {
                 game = new Game(json);
+                $ol.append(game.gameLi());
+
             });
         });
         e.preventDefault(); 

@@ -2,10 +2,12 @@
 
 <h1>All games</h1>
 <% if @games_list_order == 'Oldest to Newest' %>
-    <p>All games: Oldest to Newest | <%= link_to 'Newest to Oldest', games_newest_to_oldest_path %></p>
+    <p class="sort-games">All games: Oldest to Newest | <%= link_to 'Newest to Oldest', games_newest_to_oldest_path %></p>
 <% else %>
     <p>All games: <%= link_to 'Oldest to Newest', games_path, class: 'sort-game-oldest' %> | Newest to Oldest</p>
 <% end %>
+
+<p class="sort-games">All </p>
 
 <div class='all-games'>
 <ol>

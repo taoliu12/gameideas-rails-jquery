@@ -28,6 +28,12 @@
 
 <h3><%= link_to 'All games', games_path %></h3>
 
+<script id="games-template" type="text/x-handlebars-template">
+    <li> 
+        <a href="games/{{id}}"">{{title}}</a>
+    </li>
+</script>
+
 <script id="suggestions-template" type="text/x-handlebars-template">
     <li> 
         <p>{{content}}</p>

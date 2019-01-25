@@ -14,7 +14,7 @@ $(function() {
         return Game.template(this)
     }
 
-    const bindEventListerners = () => {
+    function bindEventListerners() => {
         $('a.sort-game-newest').on('click', function(e) {
             $.get(this.href).success(function(response) {
                 $('.sort-games').html(
@@ -35,7 +35,7 @@ $(function() {
         $('a.sort-game-oldest').on('click', function(e) {
             $.get(this.href).success(function(response) {
                 $('.sort-games').html(
-                    '<p class="sort-games">All games: Oldest to Newest | <a href="/games/newest_to_oldest" , class: "sort-game-oldest">Newest to Oldest</a></p>'
+                    '<p class="sort-games">All games: Oldest to Newest | <a href="/games/newest_to_oldest" , class: "sort-game-newest">Newest to Oldest</a></p>'
                 );
                 bindEventListerners();
                 let $ol = $('.all-games ol'); 

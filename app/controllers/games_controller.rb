@@ -33,7 +33,10 @@ class GamesController < ApplicationController
             @games = Game.newest_to_oldest
         end
         
-        render :index
+        respond_to do |f| 
+            f.json { render :json => @games }
+            f.html { render :index }
+        end
     end
 
     def new

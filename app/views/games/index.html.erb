@@ -2,19 +2,19 @@
 
 <h1>All games</h1>
 <% if @games_list_order == 'Oldest to Newest' %>
-    <p class="sort-games">All games: Oldest to Newest | <%= link_to 'Newest to Oldest', games_newest_to_oldest_path %></p>
+    <p class="sort-games">All games: Oldest to Newest | <%= link_to 'Newest to Oldest', games_newest_to_oldest_path, class: 'sort-game-newest' %></p>
 <% else %>
-    <p>All games: <%= link_to 'Oldest to Newest', games_path, class: 'sort-game-oldest' %> | Newest to Oldest</p>
+    <p class="sort-games">All games: <%= link_to 'Oldest to Newest', games_path, class: 'sort-game-oldest' %> | Newest to Oldest</p>
 <% end %>
 
-<p class="sort-games">All </p>
+<p class="sort-games">All games: Oldest to Newest | <%= link_to 'Newest to Oldest', games_newest_to_oldest_path, class: 'sort-game-newest' %></p>
 
 <div class='all-games'>
-<ol>
-<% @games.each do |g| %>
-    <li> <%= link_to g.title, game_path(g) %> </li>
-<% end %>
-</ol>
+    <ol>
+        <% @games.each do |g| %>
+            <li> <%= link_to g.title, game_path(g) %> </li>
+        <% end %>
+    </ol>
 </div>
 
 <% if @games.empty? %>

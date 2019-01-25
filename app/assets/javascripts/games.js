@@ -14,39 +14,43 @@ $(function() {
         return Game.template(this)
     }
 
-    $('a.sort-game-oldest').on('click', function(e) {
-        $.get(this.href).success(function(response) {
-            $('.sort-games').html(
-                '<p class="sort-games">All games: Oldest to Newest | <a href="/games/newest_to_oldest" , class: "sort-game-oldest">Newest to Oldest</a></p>'
-            );
-
-            let $ol = $('.all-games ol'); 
-            $ol.html("");
-            
-            response.forEach(json => {
-                game = new Game(json);
-                $ol.append(game.gameLi());
+    const bindEventListerners = () => {
+        $('a.sort-game-newest').on('click', function(e) {
+            $.get(this.href).success(function(response) {
+                $('.sort-games').html(
+                    '<p class="sort-games">All games: <a class="sort-game-oldest" href="/games">Oldest to Newest</a> | Newest to Oldest</p>'
+                );
+                bindEventListerners();
+                let $ol = $('.all-games ol'); 
+                $ol.html("");
+                
+                response.forEach(json => {
+                    game = new Game(json);
+                    $ol.append(game.gameLi());
+                });
             });
+            e.preventDefault(); 
         });
-        e.preventDefault(); 
-    }); 
-
-    $('a.sort-game-newest').on('click', function(e) {
-        $.get(this.href).success(function(response) {
-            $('.sort-games').html(
-                'sort'
-            );
-
-            let $ol = $('.all-games ol'); 
-            $ol.html("");
-            
-            response.forEach(json => {
-                game = new Game(json);
-                $ol.append(game.gameLi());
+    
+        $('a.sort-game-oldest').on('click', function(e) {
+            $.get(this.href).success(function(response) {
+                $('.sort-games').html(
+                    '<p class="sort-games">All games: Oldest to Newest | <a href="/games/newest_to_oldest" , class: "sort-game-oldest">Newest to Oldest</a></p>'
+                );
+                bindEventListerners();
+                let $ol = $('.all-games ol'); 
+                $ol.html("");
+                
+                response.forEach(json => {
+                    game = new Game(json);
+                    $ol.append(game.gameLi());
+                });
             });
+            e.preventDefault(); 
         });
-        e.preventDefault(); 
-    }); 
+    }
+
+    bindEventListerners();
 })
 
 /////// Prev & Next Game ///////

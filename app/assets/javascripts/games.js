@@ -14,6 +14,7 @@ $(function() {
         return Game.template(this)
     }
 
+    /////// Sort by Oldest & Newest Games ///////
     function bindEventListerners() {
         $('a.sort-game-newest').on('click', function(e) {
             $.get(this.href).success(function(response) {
@@ -49,7 +50,6 @@ $(function() {
             e.preventDefault(); 
         });
     }
-
     bindEventListerners();
 })
 

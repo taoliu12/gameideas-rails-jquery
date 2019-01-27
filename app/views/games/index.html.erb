@@ -24,10 +24,7 @@
     <%= select_tag :genre_id, options_from_collection_for_select(@genres, "id", "name") %>
     <%= submit_tag 'Search', name: nil %>
 <% end %>
-
-<p>Games you made suggestions to:</p>
-<%= render 'games/suggested_games' %>
-
+<br>
 <h2><%= link_to 'Make a new game', new_game_path %></h2>
 
 <h2><%= link_to 'My Games', my_games_path %></h2>

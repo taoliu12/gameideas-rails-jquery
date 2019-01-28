@@ -1,19 +1,14 @@
-class Game {
-    constructor(attributes) {
-        this.id = attributes.id;
-        this.title = attributes.title;
-        this.summary = attributes.summary;
+$(() => {
+    class Game {
+        constructor(attributes) {
+            this.id = attributes.id;
+            this.title = attributes.title;
+            this.summary = attributes.summary;
+        }
     }
-}
-
-$(function() {
     Game.templateSource = $('#games-template').html();
     Game.template = Handlebars.compile(Game.templateSource);
 
-    Game.prototype.gameLi = function() {
-        return Game.template(this)
-    }
-  
     Game.renderGames = (games) => {
         let $ol = $('.all-games ol'); 
         $ol.html("");
@@ -24,6 +19,10 @@ $(function() {
         });
     }
 
+    Game.prototype.gameLi = function() {
+        return Game.template(this)
+    }
+
     /////// Sort by Oldest & Newest Games ///////
     function bindEventListerners() {
         $('a.sort-game-newest').on('click', function(e) {
@@ -31,8 +30,7 @@ $(function() {
                 $('.sort-games').html(
                     '<p class="sort-games">All games: <a class="sort-game-oldest" href="/games">Oldest to Newest</a> | Newest to Oldest</p>'
                 );
-
-                bindEventListerners();  
+                bindEventListerners(); 
 
                 Game.renderGames(response);
             });
@@ -44,9 +42,8 @@ $(function() {
                 $('.sort-games').html(
                     '<p class="sort-games">All games: Oldest to Newest | <a href="/games/newest_to_oldest" , class="sort-game-newest">Newest to Oldest</a></p>'
                 );
-
-                bindEventListerners();
-                
+                bindEventListerners();       
+                      
                 Game.renderGames(response);
             });
             e.preventDefault(); 

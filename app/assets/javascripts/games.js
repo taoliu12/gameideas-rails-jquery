@@ -31,7 +31,6 @@ $(() => {
                     '<p class="sort-games">All games: <a class="sort-game-oldest" href="/games">Oldest to Newest</a> | Newest to Oldest</p>'
                 );
                 bindEventListerners(); 
-
                 Game.renderGames(response);
             });
             e.preventDefault(); 
@@ -42,8 +41,7 @@ $(() => {
                 $('.sort-games').html(
                     '<p class="sort-games">All games: Oldest to Newest | <a href="/games/newest_to_oldest" , class="sort-game-newest">Newest to Oldest</a></p>'
                 );
-                bindEventListerners();       
-                      
+                bindEventListerners();                         
                 Game.renderGames(response);
             });
             e.preventDefault(); 
@@ -90,13 +88,3 @@ $(function () {
 });
 
 
-
-
-
-$("a.js-Delete").on('click', function() {
-    $(this).parent().fadeOut();
-    $.post(this.href, "_method=delete", function(data) {
-        addProjectListeners();
-    });
-    return false;
-});

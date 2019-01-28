@@ -56,10 +56,3 @@ $(function() {
 
 
 
-
-$(function() {
-    //Suggestions Checkbox 
-    $('.greenlit-chkbox').on('change', function() {
-        $(this).parents('form').trigger('submit')
-    });
-}); 

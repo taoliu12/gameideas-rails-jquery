@@ -1,9 +1,11 @@
-function Game(attributes) {
-    this.id = attributes.id;
-    this.title = attributes.title;
-    this.summary = attributes.summary;
-    // this.created_at = attributes.created_at;
-    // this.author = attributes.user.username;
+class Game {
+    constructor(attributes) {
+        this.id = attributes.id;
+        this.title = attributes.title;
+        this.summary = attributes.summary;
+        // this.created_at = attributes.created_at;
+        // this.author = attributes.user.username;
+    }
 }
 
 $(function() {
@@ -57,7 +59,7 @@ $(function() {
 $(function () {
     $(".js-next").on("click", function(event) {
       event.preventDefault()
-      var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+      let nextId = parseInt($(".js-next").attr("data-id")) + 1;
       $.get("/games/" + nextId + ".json", function(data) {
         $(".username").text('Created by ' + data["user"]["username"]);
         $(".genre").text('Genre: ' + data["genre"]['name']) ;
@@ -80,7 +82,7 @@ $(function () {
   
     $(".js-prev").on("click", function(event) {
       event.preventDefault()
-      var nextId = parseInt($(".js-next").attr("data-id")) - 1;
+      let nextId = parseInt($(".js-next").attr("data-id")) - 1;
       $.get("/games/" + nextId + ".json", function(data) {
         $(".username").text('Created by ' + data["user"]["username"]);
         $(".genre").text('Genre: ' + data["genre"]['name']) ;

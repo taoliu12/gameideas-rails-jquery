@@ -1,8 +1,10 @@
-function Suggestion(attributes) {
-    this.status = attributes.status;
-    this.content = attributes.content;
-    this.id = attributes.id;
-    this.author = attributes.user.username;
+class Suggestion {
+    constructor(attributes) {
+        this.status = attributes.status;
+        this.content = attributes.content;
+        this.id = attributes.id;
+        this.author = attributes.user.username;
+    }
 }
  
 $(function() {
@@ -26,7 +28,7 @@ $(function() {
             $ol.html("") 
 
             response.forEach(json => {
-                var suggestion = new Suggestion(json);     
+                const suggestion = new Suggestion(json);     
                 $ol.append(suggestion.suggestionLi());
             });
         });
@@ -50,7 +52,7 @@ $(function() {
             dataType: 'JSON'
         })
         .success(function(json) {
-            var suggestion = new Suggestion(json);     
+            const suggestion = new Suggestion(json);     
             $ol = $('div.suggestions ol');
             $ol.append(suggestion.suggestionLi());
         })

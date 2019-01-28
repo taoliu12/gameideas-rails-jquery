@@ -13,6 +13,16 @@ $(function() {
     Game.prototype.gameLi = function() {
         return Game.template(this)
     }
+  
+    Game.renderGames = (games) => {
+        let $ol = $('.all-games ol'); 
+        $ol.html("");
+        
+        games.forEach(json => {
+            game = new Game(json);
+            $ol.append(game.gameLi());
+        });
+    }
 
     /////// Sort by Oldest & Newest Games ///////
     function bindEventListerners() {
@@ -22,15 +32,9 @@ $(function() {
                     '<p class="sort-games">All games: <a class="sort-game-oldest" href="/games">Oldest to Newest</a> | Newest to Oldest</p>'
                 );
 
-                bindEventListerners();
+                bindEventListerners();  
 
-                let $ol = $('.all-games ol'); 
-                $ol.html("");
-                
-                response.forEach(json => {
-                    game = new Game(json);
-                    $ol.append(game.gameLi());
-                });
+                Game.renderGames(response);
             });
             e.preventDefault(); 
         });
@@ -43,17 +47,12 @@ $(function() {
 
                 bindEventListerners();
                 
-                let $ol = $('.all-games ol'); 
-                $ol.html("");
-                
-                response.forEach(json => {
-                    game = new Game(json);
-                    $ol.append(game.gameLi());
-                });
+                Game.renderGames(response);
             });
             e.preventDefault(); 
         });
     }
+    
     bindEventListerners();
 })
 

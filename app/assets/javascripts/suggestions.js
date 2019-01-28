@@ -36,13 +36,7 @@ $(function() {
     });
 
     //Post suggestion
-    $('#new_suggestion').on('submit', function(e) {
-        // data = {
-        //     'authenticity_token': $("input[name='authenticity_token']").attr('value'),
-        //     'suggestion': { 
-        //         'content':  $("#suggestion_content").val()
-        //     }
-        // }     
+    $('#new_suggestion').on('submit', function(e) { 
         $ol = $('div.suggestions ol')
 
         $.ajax({
@@ -56,12 +50,12 @@ $(function() {
             $ol = $('div.suggestions ol');
             $ol.append(suggestion.suggestionLi());
         })
-        .error(function(response) {
-            
-        });
         e.preventDefault(); 
     });
 });
+
+
+
 
 $(function() {
     //Suggestions Checkbox 

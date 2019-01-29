@@ -23,8 +23,37 @@ $(() => {
         return Game.template(this)
     }
 
+
+
     /////// Sort by Oldest & Newest Games ///////
     function bindEventListerners() {
+        $('a.sort-game-alphabetically').on('click', function(e) {
+            $.get(this.href).success(function(response) {
+                $('.sort-games').html(
+                    '<p class="sort-games">All games: <a class="sort-game-oldest" href="/games">Oldest to Newest</a> | Newest to Oldest</p>'
+                );
+                response.sort(function(a, b) {
+                    if (a.suggestions.length !== b.suggestions.length) {
+                        return a.suggestions.length - b.suggestions.length
+                    }
+                    var nameA = a.title.toUpperCase(); // ignore upper and lowercase
+                    var nameB = b.title.toUpperCase(); // ignore upper and lowercase
+                    if (nameA < nameB) {
+                      return -1;
+                    }
+                    if (nameA > nameB) {
+                      return 1;
+                    }
+                  
+                    // names must be equal
+                    return 0;
+                });
+                bindEventListerners(); 
+                Game.renderGames(response);
+            });
+            e.preventDefault(); 
+        });
+
         $('a.sort-game-newest').on('click', function(e) {
             $.get(this.href).success(function(response) {
                 $('.sort-games').html(

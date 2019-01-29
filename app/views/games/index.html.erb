@@ -4,6 +4,8 @@
 
 <p class="sort-games">All games: Oldest to Newest | <%= link_to 'Newest to Oldest', games_newest_to_oldest_path, class: 'sort-game-newest' %></p>
 
+<%= link_to 'A-Z', games_path, class: 'sort-game-alphabetically' %>
+
 <div class='all-games'>
     <ol>
         <% @games.each do |g| %>

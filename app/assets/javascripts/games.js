@@ -23,19 +23,32 @@ $(() => {
         return Game.template(this)
     }
 
-
-
     /////// Sort by Oldest & Newest Games ///////
     function bindEventListerners() {
+        $('a.sort-game-by-suggestion-count').on('click', function(e) {
+            $.get(this.href).success(function(response) {
+                response.sort(function(a, b) {
+                    var suggestionA = a.suggestions.length;
+                    var suggestionB = b.suggestions.length;
+                    if (suggestionA !== suggestionB) {
+                        return suggestionA - suggestionB
+                    }
+                });
+                bindEventListerners(); 
+                Game.renderGames(response);
+            });
+            e.preventDefault(); 
+        });
+
         $('a.sort-game-alphabetically').on('click', function(e) {
             $.get(this.href).success(function(response) {
-                $('.sort-games').html(
-                    '<p class="sort-games">All games: <a class="sort-game-oldest" href="/games">Oldest to Newest</a> | Newest to Oldest</p>'
-                );
                 response.sort(function(a, b) {
-                    if (a.suggestions.length !== b.suggestions.length) {
-                        return a.suggestions.length - b.suggestions.length
+                    var suggestionA = a.suggestions.length;
+                    var suggestionB = b.suggestions.length;
+                    if (suggestionA !== suggestionB) {
+                        return suggestionA - suggestionB
                     }
+
                     var nameA = a.title.toUpperCase(); // ignore upper and lowercase
                     var nameB = b.title.toUpperCase(); // ignore upper and lowercase
                     if (nameA < nameB) {
@@ -56,9 +69,6 @@ $(() => {
 
         $('a.sort-game-newest').on('click', function(e) {
             $.get(this.href).success(function(response) {
-                $('.sort-games').html(
-                    '<p class="sort-games">All games: <a class="sort-game-oldest" href="/games">Oldest to Newest</a> | Newest to Oldest</p>'
-                );
                 bindEventListerners(); 
                 Game.renderGames(response);
             });

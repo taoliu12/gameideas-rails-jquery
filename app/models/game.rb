@@ -5,7 +5,7 @@ class Game < ApplicationRecord
     
     validates :title, :presence => true
     validates :summary, :presence => true
-    validates :summary, length: { minimum: 10 }
+    validates :summary, :presence => true
     
     scope :newest_to_oldest, -> { order('created_at DESC') }
 

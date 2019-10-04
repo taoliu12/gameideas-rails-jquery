@@ -17,7 +17,7 @@
     </ol>
 </div>
 
-<% if @games.empty? %>
+<% if @genre && @games.empty? %>
     <p>   No games in the <%= @genre.name %> genre.</p>
 <% end %>
 

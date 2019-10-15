@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
         session[:user_id]
     end
 
-    def welcome
+    def welcome         
         if session[:user_id].present?
             @user = User.find(session[:user_id])
         else

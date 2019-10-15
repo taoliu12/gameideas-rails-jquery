@@ -6,6 +6,7 @@ ruby '2.6.1'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'active_model_serializers'
+gem 'dotenv-rails'
 
 gem 'bcrypt'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,5 +1,6 @@
 <h1>Create a new game</h1>
 
+
 <%= form_for @game do |f| %>
     <p>Title (e.g. Mario Brothers): </p>
     <%= f.text_field :title, :class => 'form_field' %>
@@ -17,14 +18,14 @@
         <%= @game.errors.full_messages_for(:user).first %>
     </div>
 
-    <p>Genre</p>
+    <p>Choose a Genre:</p>
     <div class='form_error_message'>
         <%= @game.errors.full_messages_for(:genre).first %>
     </div>
 
-    <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: true) %>
-
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt: true}, class: "browser-default") %>
+    <br>
     <%= f.submit %>
 <% end %>
 
-<h3><%= link_to 'All games', games_path %></h3>
+<h4><%= link_to 'View All Games', games_path %></h4>

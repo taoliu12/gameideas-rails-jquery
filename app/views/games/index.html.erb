@@ -11,23 +11,24 @@
 </div>
 
 <% if @genre && @games.empty? %>
-    <p>   No games in the <%= @genre.name %> genre.</p>
+    <p><i>   There are currently no  submissions in the <%= @genre.name %> genre.</i> </p>
 <% end %>
 
 
 
-<p>Filter by Genre</p>
+<p>Filter by Genre:</p>
 
 <%= form_tag(games_path, {method: :get}) do %>
     <%= select_tag :genre_id, options_from_collection_for_select(@genres, "id", "name") %>
-    <%= submit_tag 'Search', name: nil %>
+    <br>
+    <%= submit_tag 'Filter', name: nil %>
 <% end %>
 <br>
 <h3><%= link_to 'Make a new game', new_game_path %></h3>
 
 <h3><%= link_to 'My Games', my_games_path %></h3>
 
-<h4>Logged in as <%= current_user.username %> | <%= link_to "Logout", logout_path %></h4>
+<p>Logged in as <%= current_user.username %> | <%= link_to "Logout", logout_path %></p>
 
 <script id="games-template" type="text/x-handlebars-template">
     <li> 

@@ -1,8 +1,8 @@
 
 
-<h1>All games</h1>
+<h4>All games</h4>
 
-<div class='all-games'>
+<div>
     <ol>
         <% @games.each do |g| %>
             <li> <%= link_to g.title, game_path(g) %> </li>
@@ -23,10 +23,7 @@
     <br>
     <%= submit_tag 'Filter', name: nil %>
 <% end %>
-<br>
-<h3><%= link_to 'Make a new game', new_game_path %></h3>
-
-<h3><%= link_to 'My Games', my_games_path %></h3>
+<br
 
 <p>Logged in as <%= current_user.username %> | <%= link_to "Logout", logout_path %></p>
 

@@ -26,4 +26,14 @@ select {
 
 .sidenav li > a {
     color: white;
-  }    
+}    
+
+ol { padding-left: 1em; }
+
+nav ul li a:hover {
+    background-color: rgb(211, 71, 46);
+ }
+
+ul.sidenav li a:hover {
+    background-color: rgb(211, 71, 46);
+ }

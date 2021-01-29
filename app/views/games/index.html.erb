@@ -5,7 +5,7 @@
 <div>
     <ol>
         <% @games.each do |g| %>
-            <li> <%= link_to g.title, game_path(g) %> </li>
+            <li> <%= link_to g.title, game_path(g) %> (<%= g.genre.name %>) </li>
         <% end %>
     </ol>
 </div>
@@ -21,7 +21,7 @@
 <%= form_tag(games_path, {method: :get}) do %>
     <%= select_tag :genre_id, options_from_collection_for_select(@genres, "id", "name") %>
     <br>
-    <%= submit_tag 'Filter', class: "btn site-color" %>
+    <%= submit_tag 'Filter', class: "btn blue darken-4" %>
 <% end %>
 
 <br>

@@ -18,14 +18,14 @@
 
 <p>Filter by Genre</p>
 
-<%= form_tag(games_path, method: :get) do %>
+<%= form_tag(games_path, {method: :get}) do %>
     <%= select_tag :genre_id, options_from_collection_for_select(@genres, "id", "name") %>
     <%= submit_tag 'Search', name: nil %>
 <% end %>
 <br>
-<h2><%= link_to 'Make a new game', new_game_path %></h2>
+<h3><%= link_to 'Make a new game', new_game_path %></h3>
 
-<h2><%= link_to 'My Games', my_games_path %></h2>
+<h3><%= link_to 'My Games', my_games_path %></h3>
 
 <h4>Logged in as <%= current_user.username %> | <%= link_to "Logout", logout_path %></h4>
 

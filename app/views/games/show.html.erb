@@ -23,7 +23,7 @@
 <%= form_for [@game, @suggestion] do |f| %>
     <%= f.text_area :content, size: '55x5', :placeholder => 'Suggest an idea' %>
     <br>
-    <%= f.submit %>
+    <%= f.submit, class: "btn blue darken-4"  %>
 <% end %>
 
 <h3><%= link_to 'All games', games_path %></h3>

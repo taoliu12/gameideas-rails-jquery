@@ -1,4 +1,4 @@
-<h1>New User Signup</h1>
+<h4>New User Signup</h4>
 
 <%= form_for @user do |f| %>
     <%= f.label :'username:' %>
@@ -18,7 +18,7 @@
     <div class='form_error_message'>
         <p><%= @error %></p>
     </div>
-    <%= f.submit %>
+    <%= f.submit 'Signup', class: "btn blue darken-4"  %>
 <% end %>
 <br>
 <%= link_to 'Go to Login Page', login_path %>

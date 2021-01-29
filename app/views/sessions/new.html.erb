@@ -1,17 +1,16 @@
-<h1>Login</h1>
-
+<h4>Login</h4>
+  
 <%= form_for :user, path: '/login' do |f| %>
     <div class='form_error_message'>
-        <p><%= @error %></p>
+        <p><i><%= @error %></i></p>
     </div>
 
     Username: <%= f.text_field :username %>
     
     Password: <%= f.password_field :password %>
 
-    <%= f.submit 'Login' %>
-<% end %>
-
+    <%= f.submit 'Login', class: "btn blue darken-4"  %>
+<% end %> 
 <br>
 
 <%= link_to 'Go to Signup Page', new_user_path %>  

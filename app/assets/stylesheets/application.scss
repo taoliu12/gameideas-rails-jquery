@@ -16,6 +16,7 @@
 
 @import "materialize";
 @import "https://fonts.googleapis.com/icon?family=Material\Icons";
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
 select {
     display: block;
@@ -30,10 +31,10 @@ select {
 
 ol { padding-left: 1em; }
 
-nav ul li a:hover {
+ nav ul li a:hover, ul.sidenav li a:hover {
     background-color: rgb(211, 71, 46);
  }
 
-ul.sidenav li a:hover {
-    background-color: rgb(211, 71, 46);
+ .brand-logo {
+    font-family: 'Luckiest Guy', cursive;
  }

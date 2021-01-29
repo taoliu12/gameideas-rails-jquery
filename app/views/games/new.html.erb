@@ -25,7 +25,7 @@
 
     <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt: true}, class: "browser-default") %>
     <br>
-    <%= f.submit %>
+    <%= f.submit "Create", class: "btn blue darken-4"  %>
 <% end %>
 
 <h4><%= link_to 'View All Games', games_path %></h4>

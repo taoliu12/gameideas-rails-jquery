@@ -1,8 +1,8 @@
 
 
-<h1>My games</h1>
+<h4>My games</h4>
 
-<p>Games you created:</p>
+<h6>Games you created:</h6>
 
 <ol>
 <% @games.each do |g| %>
@@ -10,10 +10,10 @@
 <% end %>
 </ol>
 
-<p>Games you made suggestions to:</p>
+<h6>Games you made suggestions to:</h6>
 <%= render 'games/suggested_games' %>
 
-<p>Genres of your games:</p>
+<h6>Genres of your games:</h6>
 
 <ol>
 <% @genres.each do |g| %>
@@ -21,7 +21,4 @@
 <% end %>
 </ol>
 
-<h3><%= link_to 'Make a new game', new_game_path %></h3>
-<h3><%= link_to 'All games', games_path %></h3>
 
-<h4>Logged in as <%= current_user.username %> | <%= link_to "Logout", logout_path %></h4>

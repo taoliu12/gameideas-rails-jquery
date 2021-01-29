@@ -21,11 +21,10 @@
 <%= form_tag(games_path, {method: :get}) do %>
     <%= select_tag :genre_id, options_from_collection_for_select(@genres, "id", "name") %>
     <br>
-    <%= submit_tag 'Filter', name: nil %>
+    <%= submit_tag 'Filter', class: "btn site-color" %>
 <% end %>
-<br
 
-<p>Logged in as <%= current_user.username %> | <%= link_to "Logout", logout_path %></p>
+<br>
 
 <script id="games-template" type="text/x-handlebars-template">
     <li> 

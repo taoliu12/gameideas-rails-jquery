@@ -1,6 +1,6 @@
 <h1>Create a new game</h1>
 
-
+<div style="width:440px">
 <%= form_for @game do |f| %>
     <p>Title (e.g. Mario Brothers): </p>
     <%= f.text_field :title, :class => 'form_field' %>
@@ -27,5 +27,5 @@
     <br>
     <%= f.submit "Create", class: "btn blue darken-4"  %>
 <% end %>
-
+</div>
 <h4><%= link_to 'View All Games', games_path %></h4>

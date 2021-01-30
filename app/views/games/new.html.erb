@@ -8,7 +8,7 @@
     </div>
 
     <p>Summary (e.g. is your game a 2D platformer? How will the graphics look?):</p>   
-    <%= f.text_area :summary, size: "90x30", :class => 'form_field' %>
+    <%= f.text_area :summary, :id => "summary",  :class => 'form_field' %>
     <div class='form_error_message'>
         <%= @game.errors.full_messages_for(:summary).first %>
     </div>

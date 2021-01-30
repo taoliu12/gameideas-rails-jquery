@@ -22,7 +22,7 @@
                 <i class="material-icons">menu</i>
               </a>
               <ul class="right hide-on-med-and-down">
-              <% if !current_user %>
+              <% if !logged_in? %>
                   <li><a href="/login">Login</a></li>
                   <li><a href="/users/new">Signup</a></li>
               <% else %>
@@ -36,7 +36,7 @@
         </nav>
       </div>
       <ul class="sidenav #b71c1c blue darken-4 white-text " id="mobile-nav">
-              <% if !current_user %>
+              <% if !logged_in? %>
                   <li><a href="/login">Login</a></li>
                   <li><a href="/users/new">Signup</a></li>
               <% else %>
@@ -55,7 +55,7 @@
     <div class="container">
       <%= yield %>
       <br><br>
-      <% if current_user %>
+      <% if logged_in? %>
         <%= link_to 'Make a new game', new_game_path %> |
         <%= link_to 'My Games', my_games_path %> |
         <%= link_to 'All games', games_path %>

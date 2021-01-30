@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/auth/:provider/callback'  => 'sessions#create'
   
+  get '/signup' => 'users#new'
   resources :users, :only =>  [:new, :create, :show]
 end

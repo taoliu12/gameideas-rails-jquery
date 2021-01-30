@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  def new 
+  def new       
+    redirect_to games_path if current_user
   end
 
   def create

@@ -49,6 +49,7 @@ $(function() {
             const suggestion = new Suggestion(json);     
             $ol = $('div.suggestions ol');
             $ol.append(suggestion.suggestionLi());
+            $('.new_suggestion_div').html('<i>Thanks for your suggestion!</i>');
         })
         e.preventDefault(); 
     });

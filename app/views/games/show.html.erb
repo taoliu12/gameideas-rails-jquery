@@ -13,12 +13,13 @@
 
 <br>
 
-<%= form_for [@game, @suggestion] do |f| %>
-    <%= f.text_area :content, size: '55x5', :placeholder => 'Suggest an idea' %>
-    <br>
-    <%= f.submit  'Submit', class: "btn blue darken-4"  %>
-<% end %>
-
+<div class='new_suggestion_div'>
+    <%= form_for [@game, @suggestion] do |f| %>
+        <%= f.text_area :content, size: '55x5', :placeholder => 'Suggest an idea' %>
+        <br>
+        <%= f.submit  'Submit', class: "btn blue darken-4"  %>
+    <% end %>
+</div>
 
 
 <script id="games-template" type="text/x-handlebars-template">

@@ -12,7 +12,9 @@
 <p class='gameSummary'><%= @game.summary %></p>
 <p class='username author'>Created by <%= @game.user.username %></p>
 
-<p><%= link_to 'Load suggestions', game_suggestions_path(@game), :class => 'load_suggestions' %></p>
+<% if !@game.suggestions.empty? %>
+    <p><%= link_to "Load suggestions (#{@game.suggestions.size})", game_suggestions_path(@game), :class => 'load_suggestions' %></p>
+<% end %>
 
 <div class='suggestions'>
     <ol></ol>
@@ -23,10 +25,8 @@
 <%= form_for [@game, @suggestion] do |f| %>
     <%= f.text_area :content, size: '55x5', :placeholder => 'Suggest an idea' %>
     <br>
-    <%= f.submit, class: "btn blue darken-4"  %>
+    <%= f.submit  'Submit', class: "btn blue darken-4"  %>
 <% end %>
-
-<h3><%= link_to 'All games', games_path %></h3>
 
 <script id="games-template" type="text/x-handlebars-template">
     <li> 

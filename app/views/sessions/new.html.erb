@@ -1,13 +1,14 @@
+
 <h4>Login</h4>
-  
-<%= form_for :user, path: '/login' do |f| %>
+
+<%= form_for :user, path: '/login', :html => {:class => 'form-horizontal'}  do |f| %>
     <div class='form_error_message'>
         <p><i><%= @error %></i></p>
     </div>
 
-    Username: <%= f.text_field :username %>
+    <%= f.label :'username:' %> <%= f.text_field :username %>
     
-    Password: <%= f.password_field :password %>
+    <%= f.label :'password:' %> <%= f.password_field :password %>
 
     <%= f.submit 'Login', class: "btn blue darken-4"  %>
 <% end %> 
